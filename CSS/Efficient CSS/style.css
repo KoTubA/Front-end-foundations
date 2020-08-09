@@ -1,0 +1,141 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+}
+
+.main-cnt {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    line-height: 1.5;
+    font-family: Arial;
+    position: relative;
+    padding: 60px;
+}
+
+.main-cnt::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 60px;
+    height: 100%;
+    width: 1px;
+    background-color: #2962FF;
+}
+
+.cnt-example, .section, .wrapper, .correct, .wrong {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    flex-direction: column;
+}
+
+.cnt-example {
+    padding: 80px 20px 50px 50px;
+}
+
+.section {
+    flex-direction: column;
+    position: relative;
+    width: 100vw;
+    padding: 50px;
+}
+
+.section::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    background-color: #2962FF;
+    color: #FFF;
+    padding: 10px 50px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 2;
+    min-width: 300px;
+}
+
+.animation::after {
+    content: 'Animation';
+}
+
+button {
+    border: none;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    margin: 0px 100px;
+}
+
+.primary, .secondary {
+    position: relative;
+    background-color: #021aee;
+}
+
+.primary {
+    top: 0;
+    transition: box-shadow 2s ease, top 2s ease;
+}
+
+.primary:hover {
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+    top: 30px;
+}
+
+.secondary {
+    transition: transform 2s ease;
+}
+
+.secondary::after {
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+    transition: opacity 2s ease;
+}
+
+.secondary:hover {
+    transform: translateY(30px);
+}
+
+.secondary:hover::after {
+    opacity: 1;
+}
+
+.code {
+    background: #f3f5f6;
+    padding: 1em;
+    border-radius: .3rem;
+    font-size: 1.5em;
+    margin: 0px 20px 0px 80px;
+    color: #586e75;
+}
+
+.correct, .wrong {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 80px;
+    font-size: 2.5em;
+}
+
+.correct {
+    background-color: #2ba105;
+}
+
+.wrong {
+    background-color: #e30425;   
+}
