@@ -1,0 +1,131 @@
+:root {
+    --rotate-first: 0deg;
+    --rotate-later: 0deg;
+}
+
+body {
+    overflow: hidden;
+}
+
+@-webkit-keyframes collision-effect {
+    0% {
+        -webkit-transform: translateY(600px);
+                transform: translateY(600px);
+    }
+
+    30% {
+        -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+    }
+
+    55% {
+        -webkit-transform: rotate(var(--rotate-first));
+                transform: rotate(var(--rotate-first));
+        border-radius: 0%;;
+    }
+
+    80% {
+        -webkit-transform: rotate(var(--rotate-later));
+                transform: rotate(var(--rotate-later));
+        border-radius: 50%;
+    }
+    
+    85% {
+        border-radius: 50%;
+    }
+
+    100% {
+        -webkit-transform: scale(0.75);
+                transform: scale(0.75);
+    }
+}
+
+@keyframes collision-effect {
+    0% {
+        -webkit-transform: translateY(600px);
+                transform: translateY(600px);
+    }
+
+    30% {
+        -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+    }
+
+    55% {
+        -webkit-transform: rotate(var(--rotate-first));
+                transform: rotate(var(--rotate-first));
+        border-radius: 0%;;
+    }
+
+    80% {
+        -webkit-transform: rotate(var(--rotate-later));
+                transform: rotate(var(--rotate-later));
+        border-radius: 50%;
+    }
+    
+    85% {
+        border-radius: 50%;
+    }
+
+    100% {
+        -webkit-transform: scale(0.75);
+                transform: scale(0.75);
+    }
+}
+
+@-webkit-keyframes shine {
+    0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+    }
+
+    100% {
+        -webkit-transform: scale(2);
+                transform: scale(2);
+    }
+}
+
+@keyframes shine {
+    0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+    }
+
+    100% {
+        -webkit-transform: scale(2);
+                transform: scale(2);
+    }
+}
+
+.box, .shine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+.box-first {
+    --rotate-first: -45deg;
+    --rotate-later: -90deg;
+}
+
+.box-second {
+    --rotate-first: 45deg;
+    --rotate-later: 90deg;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    -webkit-animation: collision-effect 3s 0s both ease-in-out;
+            animation: collision-effect 3s 0s both ease-in-out;
+}
+
+.shine {
+    -webkit-animation: shine .2s 3s both linear;
+            animation: shine .2s 3s both linear;
+}
