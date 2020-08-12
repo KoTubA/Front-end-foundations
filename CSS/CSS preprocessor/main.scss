@@ -1,0 +1,85 @@
+//Partials
+@import './colors';
+@import './resets';
+
+//Mixins
+@mixin flex ($direction: row) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+//Extend
+%full_screen {
+    width: 100vw;
+    height: 100vh;
+}
+
+%position {
+    position: absolute;
+}
+
+.landing-page {
+    position: relative;
+    font-family: $font-stack;
+    @include flex(column);
+    @extend %full_screen;
+}
+
+.bg-landing-page {
+    @extend %full_screen;
+}
+
+.bg-primary {
+    background: url("./bg.jpg") top center no-repeat;
+    background-size: cover;
+    @extend %position;
+    @extend %full_screen;
+}
+
+.bg-dividing-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    clip-path: polygon(59% 0, 60% 0, 42% 100%, 41% 100%);
+    background-color: $color-primary;
+    z-index: 5;
+}
+
+.bg-secondary-color {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    clip-path: polygon(60% 0, 100% 0, 100% 100%, 42% 100%);
+    background-color: $color-secondary;
+    z-index: 2;
+    @extend %position;
+}
+
+//Nesting
+.main-cnt-text {
+    width: fit-content;
+    @include flex(column);
+    padding: 40px 60px;
+    background-color: $color-primary;
+    box-shadow: $box-shadow;
+    text-transform: uppercase;
+    z-index: 10;
+    @extend %position;
+
+    .main-title {
+        font-weight: map-get($font-weight, "heavy");
+        font-size: 65px;
+    }
+    
+    .main-subtitle {
+        padding-top: 10px;
+        letter-spacing: 0.12em;
+        font-size: 22px;
+        font-weight: map-get($font-weight, "light");
+    }
+}

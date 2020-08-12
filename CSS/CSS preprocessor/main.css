@@ -1,0 +1,76 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.bg-primary, .bg-landing-page, .landing-page {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-cnt-text, .bg-secondary-color, .bg-primary {
+  position: absolute;
+}
+
+.landing-page {
+  position: relative;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bg-primary {
+  background: url("./bg.jpg") top center no-repeat;
+  background-size: cover;
+}
+
+.bg-dividing-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  clip-path: polygon(59% 0, 60% 0, 42% 100%, 41% 100%);
+  background-color: #FFFFFF;
+  z-index: 5;
+}
+
+.bg-secondary-color {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 42% 100%);
+  background-color: #e2e2e2;
+  z-index: 2;
+}
+
+.main-cnt-text {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 60px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  z-index: 10;
+}
+.main-cnt-text .main-title {
+  font-weight: 900;
+  font-size: 65px;
+}
+.main-cnt-text .main-subtitle {
+  padding-top: 10px;
+  letter-spacing: 0.12em;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+/*# sourceMappingURL=main.css.map */
