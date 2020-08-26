@@ -17,8 +17,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
 
 .yt-icon-button, .avatar-yt {
@@ -104,6 +104,10 @@ body {
   background-color: #313131;
   border-radius: 0 2px 2px 0;
   margin: 0;
+}
+
+.create-icon, .app-yt-icon {
+  display: none;
 }
 
 .yt-search-icon-wrapper {
@@ -212,6 +216,12 @@ body {
 
 .yt-video-meta {
   width: 60%;
+}
+
+@media (min-width: 425px) {
+  .create-icon, .app-yt-icon {
+    display: inline-block;
+  }
 }
 
 @media (min-width: 656px) {
