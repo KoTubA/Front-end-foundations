@@ -52,8 +52,8 @@ body {
 }
 
 .third-cnt-article {
-  -ms-grid-rows: auto 350px;
-      grid-template-rows: auto 350px;
+  -ms-grid-rows: auto 310px;
+      grid-template-rows: auto 310px;
   grid-auto-rows: 120px;
   -ms-flex-line-pack: start;
       align-content: start;
@@ -171,6 +171,8 @@ body {
     grid-auto-rows: 220px;
   }
   .third-cnt-article {
+    -ms-grid-rows: auto 330px;
+        grid-template-rows: auto 330px;
     grid-auto-rows: 130px;
   }
 }
@@ -183,6 +185,8 @@ body {
     padding: 20px;
   }
   .third-cnt-article {
+    -ms-grid-rows: auto 410px;
+        grid-template-rows: auto 410px;
     grid-auto-rows: 150px;
   }
 }
@@ -206,8 +210,8 @@ body {
   .third-cnt-article {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
-    -ms-grid-rows: auto 300px;
-        grid-template-rows: auto 300px;
+    -ms-grid-rows: auto 310px;
+        grid-template-rows: auto 310px;
     grid-auto-rows: 130px;
     grid-gap: 5px;
   }
@@ -263,8 +267,8 @@ body {
     grid-auto-rows: 250px;
   }
   .third-cnt-article {
-    -ms-grid-rows: auto 350px;
-        grid-template-rows: auto 350px;
+    -ms-grid-rows: auto 360px;
+        grid-template-rows: auto 360px;
   }
 }
 
@@ -274,10 +278,6 @@ body {
   }
   .article-details-small {
     width: 70%;
-  }
-  .third-cnt-article {
-    -ms-grid-rows: auto 370px;
-        grid-template-rows: auto 370px;
   }
 }
 
@@ -316,8 +316,8 @@ body {
     grid-column: span 4;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-    -ms-grid-rows: auto 270px;
-        grid-template-rows: auto 270px;
+    -ms-grid-rows: auto 300px;
+        grid-template-rows: auto 300px;
     grid-auto-rows: 105px;
   }
   .article-13 {
@@ -347,9 +347,17 @@ body {
         grid-template-rows: repeat(2, 235px);
   }
   .third-cnt-article {
-    -ms-grid-rows: auto 300px;
-        grid-template-rows: auto 300px;
+    -ms-grid-rows: auto 320px;
+        grid-template-rows: auto 320px;
     grid-auto-rows: 130px;
+    padding-left: 10px;
+  }
+}
+
+@media (min-width: 1220px) {
+  .third-cnt-article {
+    -ms-grid-rows: auto 340px;
+        grid-template-rows: auto 340px;
   }
 }
 /*# sourceMappingURL=main.css.map */
