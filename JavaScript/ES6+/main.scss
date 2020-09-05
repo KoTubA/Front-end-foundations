@@ -1,0 +1,186 @@
+@import '_colors';
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+%flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animals-world {
+    width: 100%;
+    min-height: 100vh;
+    @extend %flexbox;
+    flex-direction: column;
+    background-color: #09051c;
+    color: $white-color;
+    position: relative;
+}
+
+.animals-category-cnt {
+    @extend %flexbox;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.animals-category {
+    padding: 30px 30px 0px 30px;
+    @extend %flexbox;
+    position: relative;
+}
+
+.animals-category-description {
+    @extend %flexbox;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+.animals-category-description:hover::before {
+    opacity: 1;
+}
+
+.animals-category-description:hover .animals-name-group {
+    opacity: 1;
+}
+
+.animals-category-description::before, .animal-overlay {
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    opacity: 0;
+    transition: 0.3s opacity ease;
+}
+
+.animal-overlay {
+    transition: none;
+    opacity: 1;
+}
+
+.animals-name-group {
+    position: absolute;
+    opacity: 0;
+    transition: 0.3s opacity ease;
+    font-size: 21px;
+}
+
+.animals-image {
+    width: 300px;
+    height: 300px;
+}
+
+.animals-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.add-animal {
+    margin-top: 70px;
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+    border-radius: 50%;
+    border: none;
+    color: $white-color;
+    background-color: $add-color;
+    box-shadow: 0px 0px 3px #999999;
+    outline: none;
+    transition: 0.5s transform ease;
+    cursor: pointer;
+}
+
+.add-animal::before {
+    content: "+";
+}
+
+.add-animal:hover {
+    transform: rotate(180deg) scale(1.1);
+}
+
+.animals-add-form, .animals-list {
+    @extend %flexbox;
+    z-index: 2;
+    width: max-content;
+    position: absolute;
+    background-color: #1b124e;
+}
+
+.animals-add-form-cnt, .animals-list-cnt {
+    @extend %flexbox;
+    flex-direction: column;
+    position: relative;
+    padding: 40px 60px;
+}
+
+.animals-add-form h2 {
+    margin-top: 0px;
+}
+
+#animals-form {
+    @extend %flexbox;
+    flex-direction: column;
+}
+
+.label-input-form {
+    position: relative;
+    @extend %flexbox;
+}
+
+.form-control, .form-select, .btn-primary {
+    width: 100%;
+    min-width: 250px;
+    padding: .375rem .75rem;
+    margin: 10px 0px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.label-input-form, .btn-primary, .animal-overlay, .animals-add-form, .animals-list {
+    display: none;
+}
+
+.btn-primary {
+    background-color: $add-color;
+    color: #FFF;
+    border-color: $add-color;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.item-visible {
+    display: block;
+}
+
+.confirm-data-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+    border-radius: 50%;
+    color: $black-color;
+    background-color: $white-color;
+    @extend %flexbox;
+    z-index: 3;
+    cursor: pointer;
+}
