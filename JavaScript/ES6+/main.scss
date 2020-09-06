@@ -19,10 +19,14 @@ body {
     width: 100%;
     min-height: 100vh;
     @extend %flexbox;
-    flex-direction: column;
-    background-color: #09051c;
+    background-color: $main-color;
     color: $white-color;
     position: relative;
+}
+
+.animals-category-wrapper {
+    @extend %flexbox;
+    flex-direction: column;
 }
 
 .animals-category-cnt {
@@ -32,7 +36,7 @@ body {
 }
 
 .animals-category {
-    padding: 30px 30px 0px 30px;
+    margin: 20px 30px;
     @extend %flexbox;
     position: relative;
 }
@@ -58,7 +62,7 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: $overlay-color;
     position: absolute;
     opacity: 0;
     transition: 0.3s opacity ease;
@@ -96,7 +100,6 @@ body {
     border: none;
     color: $white-color;
     background-color: $add-color;
-    box-shadow: 0px 0px 3px #999999;
     outline: none;
     transition: 0.5s transform ease;
     cursor: pointer;
@@ -110,22 +113,26 @@ body {
     transform: rotate(180deg) scale(1.1);
 }
 
-.animals-add-form, .animals-list {
+.animals-form-wrapper, .animals-list {
     @extend %flexbox;
     z-index: 2;
     width: max-content;
     position: absolute;
-    background-color: #1b124e;
 }
 
-.animals-add-form-cnt, .animals-list-cnt {
+.animals-form-cnt, .animals-list-cnt {
+    background-color: $second-color;
+    position: relative;
+    padding: 60px 80px;
+    flex-direction: column;
+}
+
+.animals-form-cnt {
     @extend %flexbox;
     flex-direction: column;
-    position: relative;
-    padding: 40px 60px;
 }
 
-.animals-add-form h2 {
+.animals-form-wrapper h2 {
     margin-top: 0px;
 }
 
@@ -147,19 +154,23 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    border: 1px solid #ced4da;
+    color: $form-placeholder-color;
+    background-color: $white-color;
+    border: 2px solid #ced4da;
     border-radius: .25rem;
 }
 
-.label-input-form, .btn-primary, .animal-overlay, .animals-add-form, .animals-list {
+.form-control-invalid {
+    border-color: $error-color;
+}
+
+.label-input-form, .btn-primary, .animal-overlay, .animals-form-wrapper, .animals-list {
     display: none;
 }
 
 .btn-primary {
     background-color: $add-color;
-    color: #FFF;
+    color: $white-color;
     border-color: $add-color;
     width: 100%;
     margin-top: 10px;
@@ -176,11 +187,65 @@ body {
     right: -15px;
     width: 30px;
     height: 30px;
-    padding: 8px;
+    padding: 9px;
     border-radius: 50%;
     color: $black-color;
     background-color: $white-color;
     @extend %flexbox;
     z-index: 3;
     cursor: pointer;
+}
+
+.animals-list {
+    max-width: 800px;
+    width: 100%;
+    padding: 30px;
+}
+
+.animals-list-cnt {
+    display: flex;
+    align-items: center;
+}
+
+.animals-list-title {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    width: 100%;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+}
+
+.animals-list-data {
+    width: 100%;
+    margin: 20px 0px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.animals-data-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+}
+
+.animals-data {
+    padding: 10px 10px 10px 20px;
+    line-height: 1.5;
+    border-right: 1px solid $table-border-color;
+}
+
+.animals-data:last-child {
+    border-right: none;
+}
+
+.animals-data-header {
+    background-color: $table-header-bg-color;
+}
+
+.animals-data-row {
+    border-bottom: 1px solid $table-border-color;
+}
+
+.animals-data-row:last-child {
+    border-bottom: none;
 }

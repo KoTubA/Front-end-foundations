@@ -8,7 +8,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.animals-world, .animals-category-cnt, .animals-category, .animals-category-description, .animals-add-form, .animals-list, .animals-add-form-cnt, .animals-list-cnt, #animals-form, .label-input-form, .confirm-data-close {
+.animals-world, .animals-category-wrapper, .animals-category-cnt, .animals-category, .animals-category-description, .animals-form-wrapper, .animals-list, .animals-form-cnt, #animals-form, .label-input-form, .confirm-data-close {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23,13 +23,16 @@ body {
 .animals-world {
   width: 100%;
   min-height: 100vh;
+  background-color: #0b5d9d;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.animals-category-wrapper {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #09051c;
-  color: #FFFFFF;
-  position: relative;
 }
 
 .animals-category-cnt {
@@ -39,7 +42,7 @@ body {
 }
 
 .animals-category {
-  padding: 30px 30px 0px 30px;
+  margin: 20px 30px;
   position: relative;
 }
 
@@ -107,9 +110,7 @@ body {
   border-radius: 50%;
   border: none;
   color: #FFFFFF;
-  background-color: #00C851;
-  -webkit-box-shadow: 0px 0px 3px #999999;
-          box-shadow: 0px 0px 3px #999999;
+  background-color: #00b549;
   outline: none;
   -webkit-transition: 0.5s -webkit-transform ease;
   transition: 0.5s -webkit-transform ease;
@@ -127,25 +128,32 @@ body {
           transform: rotate(180deg) scale(1.1);
 }
 
-.animals-add-form, .animals-list {
+.animals-form-wrapper, .animals-list {
   z-index: 2;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   position: absolute;
-  background-color: #1b124e;
 }
 
-.animals-add-form-cnt, .animals-list-cnt {
+.animals-form-cnt, .animals-list-cnt {
+  background-color: #014385;
+  position: relative;
+  padding: 60px 80px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: relative;
-  padding: 40px 60px;
 }
 
-.animals-add-form h2 {
+.animals-form-cnt {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.animals-form-wrapper h2 {
   margin-top: 0px;
 }
 
@@ -169,19 +177,23 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
-  background-color: #fff;
-  border: 1px solid #ced4da;
+  background-color: #FFFFFF;
+  border: 2px solid #ced4da;
   border-radius: .25rem;
 }
 
-.label-input-form, .btn-primary, .animal-overlay, .animals-add-form, .animals-list {
+.form-control-invalid {
+  border-color: #CC0000;
+}
+
+.label-input-form, .btn-primary, .animal-overlay, .animals-form-wrapper, .animals-list {
   display: none;
 }
 
 .btn-primary {
-  background-color: #00C851;
-  color: #FFF;
-  border-color: #00C851;
+  background-color: #00b549;
+  color: #FFFFFF;
+  border-color: #00b549;
   width: 100%;
   margin-top: 10px;
   cursor: pointer;
@@ -197,11 +209,75 @@ body {
   right: -15px;
   width: 30px;
   height: 30px;
-  padding: 8px;
+  padding: 9px;
   border-radius: 50%;
   color: #000000;
   background-color: #FFFFFF;
   z-index: 3;
   cursor: pointer;
+}
+
+.animals-list {
+  max-width: 800px;
+  width: 100%;
+  padding: 30px;
+}
+
+.animals-list-cnt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.animals-list-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 32px;
+  width: 100%;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+
+.animals-list-data {
+  width: 100%;
+  margin: 20px 0px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.animals-data-row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(0px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+}
+
+.animals-data {
+  padding: 10px 10px 10px 20px;
+  line-height: 1.5;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.animals-data:last-child {
+  border-right: none;
+}
+
+.animals-data-header {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.animals-data-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.animals-data-row:last-child {
+  border-bottom: none;
 }
 /*# sourceMappingURL=main.css.map */
