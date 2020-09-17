@@ -14,9 +14,9 @@ We'll assume you know the basics of the basics, have been building websites for 
   - Grid
   - CSS preprocessor
 - **Java Script**
+  - Asynchronous JavaScript
   - ES6+ (Arrow function, Classes and inheritance, Range of variables etc.)
   - ES Modules
-  - Asynchronous JavaScript*
  - **NPM**
  - **Webpack***
- - **Babel***
+ - **TypeScript / Babel***
