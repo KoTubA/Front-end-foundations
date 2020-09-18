@@ -22,14 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             else {
                 message_info.innerText = "Data is correct";
-                message_cnt.classList.add('message-visible', 'correct-message');
+                message_cnt.classList.add('correct-message');
             }
 
         }
         catch (error) {
             message_info.innerText = error.message;
             form_control.classList.add('error');
-            message_cnt.classList.add('message-visible', 'incorrect-message');
+            message_cnt.classList.add('incorrect-message');
+        }
+        finally {
+            message_cnt.classList.add('message-visible');
         }
     });
 

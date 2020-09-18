@@ -84,6 +84,10 @@ body {
   padding: 10px;
 }
 
+.submit-btn:focus {
+  outline-color: #000000;
+}
+
 .message-cnt {
   font-size: 13px;
   position: relative;
