@@ -1,0 +1,50 @@
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body, .status-cnt, .status-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.load-data {
+  background-color: #3e60b7;
+  border: 2px solid #3e60b7;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.status-cnt {
+  padding: 20px;
+}
+
+.status-wrapper {
+  padding: 5px 0px;
+}
+
+.status-icon {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,45 @@
+@import '_colors';
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+%flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+    @extend %flexbox;
+    flex-direction: column;
+}
+
+
+.load-data {
+    background-color: $button-color;
+    border: 2px solid $button-color;
+    border-radius: 4px;
+    color: $white-color;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.status-cnt {
+    @extend %flexbox;
+    padding: 20px;
+}
+
+.status-wrapper {
+    @extend %flexbox;
+    padding: 5px 0px;
+}
+
+.status-icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
