@@ -29,8 +29,12 @@ body {
 }
 
 .status-cnt {
-    @extend %flexbox;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 20px;
+    min-width: 250px;
+    margin-left: 10px;
 }
 
 .status-wrapper {
