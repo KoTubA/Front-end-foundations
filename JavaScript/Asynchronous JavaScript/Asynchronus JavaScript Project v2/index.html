@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <title>Asynchronus JavaScript Project v2</title>
 </head>
 
@@ -30,23 +31,186 @@
         </div>
         <div class="weather-cnt">
             <div class="weather-background">
-                <img src="img/kumiko-shimizu-lNxMcE8mvIM-unsplash.jpg" alt="">
+                <img src="img/kumiko-shimizu-lNxMcE8mvIM-unsplash.jpg">
             </div>
             <div class="weather-data">
                 <div class="weather-data-main">
-                    <div class="weather-data-main-left-cnt">
-                        <div class="weather-data-main-icon"></div>
-                        <div class="weather-data-main-status"></div>
-                        <div class="weather-data-main-location"></div>
-                        <div class="weather-data-main-temp"></div>
-                        <div class="weather-change-location"></div>
+                    <div class="weather-data-main-cnt">
+                        <div class="weather-data-main-icon">
+                            <img src="img/icon/005-sun.svg">
+                        </div>
+                        <div class="weather-data-main-status">Suny</div>
+                        <div class="weather-data-main-location">Lubień</div>
+                        <div class="weather-data-main-temp">28 &deg;C</div>
+                        <div class="weather-change-data"><img src="img/icon/clock-circular-outline.svg" alt="">
+                            <span>September 22,2020</span>
+                        </div>
                     </div>
-                    <div class="weather-data-main-right-cnt">
-                        <div class="weather-data-main-humidity"></div>
-                        <div class="weather-data-main-wind-speed"></div>
+                    <div class="weather-data-deatails-wrapper">
+                        <div class="weather-data-deatails-cnt weather-data-main-humidity">
+                            <div class="weather-data-deatails-icon">
+                                <img src="img/icon/022-humidity.svg" alt="">
+                            </div>
+                            <div class="weather-data-deatails">
+                                <div class="weather-data-deatails-title">Humidity</div>
+                                <div class="weather-data-deatails-data">50%</div>
+                            </div>
+                        </div>
+                        <div class="weather-data-deatails-cnt weather-data-main-pressure">
+                            <div class="weather-data-deatails-icon">
+                                <img src="img/icon/026-pressure.svg" alt="">
+                            </div>
+                            <div class="weather-data-deatails">
+                                <div class="weather-data-deatails-title">Air pressure</div>
+                                <div class="weather-data-deatails-data">1023hPa</div>
+                            </div>
+                        </div>
+                        <div class="weather-data-deatails-cnt weather-data-main-cloudiness">
+                            <div class="weather-data-deatails-icon">
+                                <img src="img/icon/009-cloudy.svg" alt="">
+                            </div>
+                            <div class="weather-data-deatails">
+                                <div class="weather-data-deatails-title">Cloudiness</div>
+                                <div class="weather-data-deatails-data">0%</div>
+                            </div>
+                        </div>
+                        <div class="weather-data-deatails-cnt weather-data-main-wind-speed">
+                            <div class="weather-data-deatails-icon">
+                                <img src="img/icon/012-windy.svg" alt="">
+                            </div>
+                            <div class="weather-data-deatails">
+                                <div class="weather-data-deatails-title">Wind Speed</div>
+                                <div class="weather-data-deatails-data">1.4 km/h</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="weather-data-daily"></div>
+                <div class="weather-data-daily-wrapper">
+                    <div class="weather-data-daily-button-wrapper">
+                        <div class="weather-data-daily-button weather-data-daily-previous-button">
+                            <img src="img/icon/arrow-point-to-left.svg" alt="">
+                        </div>
+                        <div class="weather-data-daily-button weather-data-daily-next-button">
+                            <img src="img/icon/arrow-point-to-right.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="weather-data-daily-cnt">
+                        <div class="weather-data-daily-slider">
+                            <div class="weather-data-daily weather-data-daily-1">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-2">
+                                <div class="weather-data-daily-title">TUE</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-3">
+                                <div class="weather-data-daily-title">WED</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-4">
+                                <div class="weather-data-daily-title">THU</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-5">
+                                <div class="weather-data-daily-title">FRI</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-6">
+                                <div class="weather-data-daily-title">SAT</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-7">
+                                <div class="weather-data-daily-title">SUN</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-8">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-9">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-10">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-11">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-12">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-13">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-14">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-15">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                            <div class="weather-data-daily weather-data-daily-16">
+                                <div class="weather-data-daily-title">MON</div>
+                                <div class="weather-data-daily-icon">
+                                    <img src="img/icon/001-cloud.svg">
+                                </div>
+                                <div class="weather-data-daily-temp">22&deg; / 8&deg;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
