@@ -17,6 +17,7 @@ img {
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    background-color: #d1ebff;
 }
 
 .weather-wrapper {
@@ -24,11 +25,11 @@ body {
     flex-direction: column;
     position: relative;
     min-height: 100vh;
-    background-color: #d1ebff;
 }
 
 .weather-search {
     display: flex;
+    flex-direction: column;
     width: 500px;
     flex: 0 1;
     position: absolute;
@@ -51,6 +52,17 @@ body {
     font-size: 14px;
     padding: 10px 50px 10px 20px;
     outline: none;
+}
+
+.weather-search.error .form-input {
+    border-color: #dc3545;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
 }
 
 .form-input:focus {
