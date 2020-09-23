@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
         search_from = document.querySelector("#search-form"),
         weather_search = document.querySelector('.weather-search'),
         weather_cnt = document.querySelector('.weather-cnt'),
-        form_input = document.querySelector('.form-input');
+        form_input = document.querySelector('.form-input'),
+        error_message = document.querySelector('.error-message'),
+        weather_search_result = document.querySelector('.weather-search-result');
 
     slider_previous_button.addEventListener('click', () => { move(false) });
     slider_next_button.addEventListener('click', () => { move(true) });
@@ -22,23 +24,45 @@ document.addEventListener("DOMContentLoaded", () => {
         weather_data_daily_slider.style.transform = "translateX(-" + weather_data_daily * i + "px)";
     }
 
+    const api = {
+        key: "dBubabeKLSsr5h6p4Fur42E71rXVLJ6j",
+        url: "http://dataservice.accuweather.com/"
+    }
+
     search_from.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        try {
-            if (form_input.value !== "") {
-                //Fetch API ... then:
+        if (form_input.value !== "") {
+            //Fetch API ... then:
 
-                weather_search.style.visibility = "hidden";
-                weather_cnt.style.visibility = "visible";
-            }
-            else {
-                throw new Error('Field cannot be empty');
-            }
+            fetch(api.url + "/locations/v1/cities/search?apikey=" + api.key + "&q=" + form_input.value)
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    else {
+                        throw new Error("Error: " + response.status);
+                    }
+                })
+                .then((data) => {
+                    if (data.length === 0) {
+                        throw new Error("No results found");
+                    }
+                    else if (data.length === 1) {
+                        //TODO
+                    }
+                    else {
+                        showResult(data);
+                    }
+                    error_message.innerText = "";
+                })
+                .catch((error) => {
+                    error_message.innerText = error.message;
+                })
         }
-        catch (error) {
+        else {
             weather_search.classList.add('error');
-            document.querySelector('.error-message').innerText = error.message;
+            error_message.innerText = "Field cannot be empty"
         }
 
     });
@@ -46,5 +70,52 @@ document.addEventListener("DOMContentLoaded", () => {
     form_input.addEventListener('focus', () => {
         weather_search.classList.remove('error');
     });
+
+
+    function showResult(data) {
+        let fragment = document.createDocumentFragment();
+        let fragment_title = document.createElement('p');
+        fragment_title.classList.add('weather-search-result-title');
+        fragment_title.innerText = "Result:"
+
+        fragment.appendChild(fragment_title);
+
+        for (obj of data) {
+            let location_item = document.createElement('div');
+            location_item.classList.add('weather-search-result-item');
+            location_item.dataset.key = obj.Key;
+            location_item.innerText = obj.LocalizedName + ", " + obj.SupplementalAdminAreas[0].LocalizedName + ", " + obj.Country.ID;
+
+            location_item.addEventListener('click', showWeather)
+
+            fragment.appendChild(location_item);
+        }
+
+        weather_search_result.appendChild(fragment);
+
+        weather_search.style.visibility = "hidden";
+        weather_search_result.style.visibility = "visible";
+    }
+
+
+    function showWeather() {
+        fetch(api.url + "/forecasts/v1/daily/15day/" + this.getAttribute("data-key") + "?apikey=" + api.key)
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                else {
+                    throw new Error("Error: " + response.status);
+                }
+            })
+            .then((data) => {
+                weather_search_result.style.visibility = "hidden";
+                weather_cnt.style.visibility = "visible";
+                console.log(data);
+            })
+            .catch((error) => {
+                error_message.innerText = error.message;
+            })
+    }
 
 });
