@@ -25,39 +25,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const api = {
-        key: "dBubabeKLSsr5h6p4Fur42E71rXVLJ6j",
-        url: "http://dataservice.accuweather.com/"
+        key: "dd9c76de28a7dee3d4a4dbe15ddd5933",
+        url: "http://api.openweathermap.org/data/2.5/",
+        days: 1
     }
 
     search_from.addEventListener('submit', (e) => {
         e.preventDefault();
 
         if (form_input.value !== "") {
-            //Fetch API ... then:
 
-            fetch(api.url + "/locations/v1/cities/search?apikey=" + api.key + "&q=" + form_input.value)
-                .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    else {
-                        throw new Error("Error: " + response.status);
-                    }
+            Promise.all([fetch(api.url + "weather?q=" + form_input.value + "&appid=" + api.key), fetch(api.url + "forecast?q=" + form_input.value + "&cnt=16&appid=" + api.key)])
+                .then(async ([currentData, forecastData]) => {
+                    return [currentData.json(), forecastData.json()];
                 })
                 .then((data) => {
-                    if (data.length === 0) {
-                        throw new Error("No results found");
-                    }
-                    else if (data.length === 1) {
-                        //TODO
-                    }
-                    else {
-                        showResult(data);
-                    }
-                    error_message.innerText = "";
+                    showResult(data);
                 })
                 .catch((error) => {
-                    error_message.innerText = error.message;
+                    error_message.innerText = "Error: " + error.message;
                 })
         }
         else {
@@ -73,6 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function showResult(data) {
+        console.log(data);
+
+        error_message.innerText = "";
+
+        //TODO
+
+        /*
         let fragment = document.createDocumentFragment();
         let fragment_title = document.createElement('p');
         fragment_title.classList.add('weather-search-result-title');
@@ -81,41 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
         fragment.appendChild(fragment_title);
 
         for (obj of data) {
-            let location_item = document.createElement('div');
-            location_item.classList.add('weather-search-result-item');
-            location_item.dataset.key = obj.Key;
-            location_item.innerText = obj.LocalizedName + ", " + obj.SupplementalAdminAreas[0].LocalizedName + ", " + obj.Country.ID;
 
-            location_item.addEventListener('click', showWeather)
-
-            fragment.appendChild(location_item);
         }
 
         weather_search_result.appendChild(fragment);
 
         weather_search.style.visibility = "hidden";
         weather_search_result.style.visibility = "visible";
-    }
-
-
-    function showWeather() {
-        fetch(api.url + "/forecasts/v1/daily/15day/" + this.getAttribute("data-key") + "?apikey=" + api.key)
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                }
-                else {
-                    throw new Error("Error: " + response.status);
-                }
-            })
-            .then((data) => {
-                weather_search_result.style.visibility = "hidden";
-                weather_cnt.style.visibility = "visible";
-                console.log(data);
-            })
-            .catch((error) => {
-                error_message.innerText = error.message;
-            })
+        */
     }
 
 });
