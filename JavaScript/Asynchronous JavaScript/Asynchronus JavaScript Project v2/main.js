@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         error_message = document.querySelector('.error-message');
 
     const weather_data_main_status = document.querySelector('.weather-data-main-status'),
+        weather_data_main_location = document.querySelector('.weather-data-main-location'),
         weather_data_main_temp = document.querySelector('.weather-data-main-temp'),
         weather_data_main_humidity = document.querySelector('.weather-data-main-humidity'),
         weather_data_main_pressure = document.querySelector('.weather-data-main-pressure'),
@@ -75,35 +76,61 @@ document.addEventListener("DOMContentLoaded", () => {
         error_message.innerText = "";
 
         //Current weather data
-        const { weather: [{ main: currentWeather, icon: currentIcon }], main: { temp: currentTemp, pressure: currentPressure, humidity: currentHumidity }, wind: { speed: currentWindSpeed }, clouds: { all: currentCloudiness } } = data[0];
+        const { weather: [{ main: currentWeather, icon: currentIcon }], main: { temp: currentTemp, pressure: currentPressure, humidity: currentHumidity }, wind: { speed: currentWindSpeed }, clouds: { all: currentCloudiness }, name: cityName } = data[0];
 
+        weather_data_main_icon.innerHTML = chooseIkone(currentIcon);
         weather_data_main_status.innerText = currentWeather;
+        weather_data_main_location.innerText = cityName;
         weather_data_main_temp.innerText = Math.round(currentTemp) + " \u00B0C";
         weather_data_main_humidity.innerText = currentHumidity + "%";
         weather_data_main_pressure.innerText = currentPressure + "hPa";
         weather_data_main_cloudiness.innerText = currentCloudiness + "%";
         weather_data_main_wind_speed.innerText = currentWindSpeed + " km/h";
-        weather_data_main_icon.innerHTML = chooseIkone(currentIcon);
 
         //Data
-        //weather_data_main_time
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        const date = new Date();
+        const day = ("0" + date.getDate()).slice(-2);
+        const mounth = monthNames[date.getMonth()];
+        const year = date.getFullYear();
+
+        weather_data_main_time.innerText = mounth + " " + day + ", " + year;
 
         //TODO
-
-        /*
+        //5 Day / 3 Hour Forecast
         let fragment = document.createDocumentFragment();
-        let fragment_title = document.createElement('p');
-        fragment_title.classList.add('weather-search-result-title');
-        fragment_title.innerText = "Result:"
+        for (obj of data[1].list) {
+            const { dt: hourDate, weather: [{ icon: hourIcon }], main: { temp: hourTemp } } = obj;
 
-        fragment.appendChild(fragment_title);
+            let wrapper = document.createElement('div');
+            wrapper.classList.add('weather-data-daily');
 
-        for (obj of data) {
+            const hourData = new Date(hourDate * 1000);
+            let hours = hourData.getHours();
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
 
+            let title = document.createElement('div');
+            title.classList.add('weather-data-daily-title');
+            title.innerText = hours + ampm;
+
+            let icon = document.createElement('div');
+            icon.classList.add('weather-data-daily-icon');
+            icon.innerHTML = chooseIkone(hourIcon);
+
+            let temp = document.createElement('div');
+            temp.classList.add('weather-data-daily-temp');
+            temp.innerText = Math.round(hourTemp) + " \u00B0C";
+
+            wrapper.appendChild(title);
+            wrapper.appendChild(icon);
+            wrapper.appendChild(temp);
+            fragment.appendChild(wrapper);
         }
 
-        weather_search_result.appendChild(fragment);
-        */
+        weather_data_daily_slider.appendChild(fragment);
 
         weather_search.style.visibility = "hidden";
         weather_cnt.style.visibility = "visible";
