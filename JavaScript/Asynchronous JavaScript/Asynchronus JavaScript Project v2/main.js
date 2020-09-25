@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         error_message = document.querySelector('.error-message'),
         loader = document.querySelector('.loader'),
         weather_background = document.querySelector('.weather-background'),
+        weather_background_wrapper = document.querySelector('.weather-background-wrapper'),
         confirm_data_close = document.querySelector('.confirm-data-close');
 
     const weather_data_main_status = document.querySelector('.weather-data-main-status'),
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             loader.style.visibility = "visible";
             weather_search.style.visibility = "hidden";
 
+            //TODO
             Promise.all([fetch(api.url + "weather?q=" + form_input.value + "&appid=" + api.key + "&units=" + api.units), fetch(api.url + "forecast?q=" + form_input.value + "&cnt=" + api.days + "&appid=" + api.key + "&units=" + api.units)])
                 .then(async ([currentData, forecastData]) => {
                     const dailyData = await currentData.json();
@@ -87,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { weather: [{ main: currentWeather, icon: currentIcon }], main: { temp: currentTemp, pressure: currentPressure, humidity: currentHumidity }, wind: { speed: currentWindSpeed }, clouds: { all: currentCloudiness }, sys: { country: currentCountry }, name: cityName } = data[0];
 
         weather_background.innerHTML = setBackground(currentIcon);
+        weather_background_wrapper.innerHTML = setBackground(currentIcon);
         weather_data_main_icon.innerHTML = chooseIkone(currentIcon);
         weather_data_main_status.innerText = currentWeather;
         weather_data_main_location.innerText = cityName + ", " + currentCountry;
@@ -143,27 +146,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
         loader.style.visibility = "hidden";
         weather_cnt.style.visibility = "visible";
+        weather_background_wrapper.style.visibility = "visible";
     }
 
+    //TODO
     function chooseIkone(icon) {
         return '<img src="img/icon/wi-' + icon + '.svg"/>';
     }
 
     //TODO
     function setBackground(status) {
-        return '<img src="img/kumiko-shimizu-lNxMcE8mvIM-unsplash.jpg" alt="">';
+        //Change the background according to the weather
+
+        //Same photos for different weather
+        if (status === "04d") { status = "03d" }
+        else if (status === "04n") { status = "03n" }
+        if (status === "09d") { status = "10d" }
+        else if (status === "09n") { status = "10n" }
+        else if (status === "11d" || status === "11n") { status = "11" }
+
+
+        return '<img src="img/background/background-' + status + '.jpg" alt="">';
         //return '<img src="img/icon/wi-' + status + '.svg"/>';
     }
 
     confirm_data_close.addEventListener('click', () => {
         weather_search.style.visibility = "visible";
         weather_cnt.style.visibility = "hidden";
+        weather_background_wrapper.style.visibility = "hidden";
     });
 
     confirm_data_close.addEventListener('keydown', (event) => {
         if (event.keyCode === 13) {
             weather_search.style.visibility = "visible";
             weather_cnt.style.visibility = "hidden";
+            weather_background_wrapper.style.visibility = "hidden";
         }
     });
 
