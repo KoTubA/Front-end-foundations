@@ -84,12 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
         error_message.innerText = "";
 
         //Current weather data
-        const { weather: [{ main: currentWeather, icon: currentIcon }], main: { temp: currentTemp, pressure: currentPressure, humidity: currentHumidity }, wind: { speed: currentWindSpeed }, clouds: { all: currentCloudiness }, name: cityName } = data[0];
+        const { weather: [{ main: currentWeather, icon: currentIcon }], main: { temp: currentTemp, pressure: currentPressure, humidity: currentHumidity }, wind: { speed: currentWindSpeed }, clouds: { all: currentCloudiness }, sys: { country: currentCountry }, name: cityName } = data[0];
 
         weather_background.innerHTML = setBackground(currentIcon);
         weather_data_main_icon.innerHTML = chooseIkone(currentIcon);
         weather_data_main_status.innerText = currentWeather;
-        weather_data_main_location.innerText = cityName;
+        weather_data_main_location.innerText = cityName + ", " + currentCountry;
         weather_data_main_temp.innerText = Math.round(currentTemp) + " \u00B0C";
         weather_data_main_humidity.innerText = currentHumidity + "%";
         weather_data_main_pressure.innerText = currentPressure + "hPa";
@@ -138,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
             fragment.appendChild(wrapper);
         }
 
+        weather_data_daily_slider.innerHTML = "";
         weather_data_daily_slider.appendChild(fragment);
 
         loader.style.visibility = "hidden";
