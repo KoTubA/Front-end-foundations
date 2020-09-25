@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
         weather_search = document.querySelector('.weather-search'),
         weather_cnt = document.querySelector('.weather-cnt'),
         form_input = document.querySelector('.form-input'),
-        error_message = document.querySelector('.error-message');
+        error_message = document.querySelector('.error-message'),
+        loader = document.querySelector('.loader'),
+        weather_background = document.querySelector('.weather-background'),
+        confirm_data_close = document.querySelector('.confirm-data-close');
 
     const weather_data_main_status = document.querySelector('.weather-data-main-status'),
         weather_data_main_location = document.querySelector('.weather-data-main-location'),
@@ -45,6 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (form_input.value !== "") {
 
+            loader.style.visibility = "visible";
+            weather_search.style.visibility = "hidden";
+
             Promise.all([fetch(api.url + "weather?q=" + form_input.value + "&appid=" + api.key + "&units=" + api.units), fetch(api.url + "forecast?q=" + form_input.value + "&cnt=" + api.days + "&appid=" + api.key + "&units=" + api.units)])
                 .then(async ([currentData, forecastData]) => {
                     const dailyData = await currentData.json();
@@ -56,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch((error) => {
                     error_message.innerText = "Error: " + error.message;
+                    loader.style.visibility = "hidden";
+                    weather_search.style.visibility = "visible";
                 })
         }
         else {
@@ -78,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //Current weather data
         const { weather: [{ main: currentWeather, icon: currentIcon }], main: { temp: currentTemp, pressure: currentPressure, humidity: currentHumidity }, wind: { speed: currentWindSpeed }, clouds: { all: currentCloudiness }, name: cityName } = data[0];
 
+        weather_background.innerHTML = setBackground(currentIcon);
         weather_data_main_icon.innerHTML = chooseIkone(currentIcon);
         weather_data_main_status.innerText = currentWeather;
         weather_data_main_location.innerText = cityName;
@@ -97,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         weather_data_main_time.innerText = mounth + " " + day + ", " + year;
 
-        //TODO
         //5 Day / 3 Hour Forecast
         let fragment = document.createDocumentFragment();
         for (obj of data[1].list) {
@@ -132,12 +140,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         weather_data_daily_slider.appendChild(fragment);
 
-        weather_search.style.visibility = "hidden";
+        loader.style.visibility = "hidden";
         weather_cnt.style.visibility = "visible";
     }
 
     function chooseIkone(icon) {
         return '<img src="img/icon/wi-' + icon + '.svg"/>';
     }
+
+    //TODO
+    function setBackground(status) {
+        return '<img src="img/kumiko-shimizu-lNxMcE8mvIM-unsplash.jpg" alt="">';
+        //return '<img src="img/icon/wi-' + status + '.svg"/>';
+    }
+
+    confirm_data_close.addEventListener('click', () => {
+        weather_search.style.visibility = "visible";
+        weather_cnt.style.visibility = "hidden";
+    });
+
+    confirm_data_close.addEventListener('keydown', (event) => {
+        if (event.keyCode === 13) {
+            weather_search.style.visibility = "visible";
+            weather_cnt.style.visibility = "hidden";
+        }
+    });
 
 });

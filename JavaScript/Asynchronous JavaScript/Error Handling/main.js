@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     confirm_data_close.addEventListener('click', () => message_cnt.classList.remove('message-visible', 'incorrect-message', 'correct-message'));
     confirm_data_close.addEventListener('keydown', (event) => {
         if (event.keyCode === 13) {
-            message_cnt.classList.toggle('message-visible', 'incorrect-message', 'correct-message');
+            message_cnt.classList.remove('message-visible', 'incorrect-message', 'correct-message');
         }
     });
 });
