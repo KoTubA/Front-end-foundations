@@ -29,18 +29,20 @@ img {
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #d1ebff;
+  background-color: #5698ca;
   position: relative;
   overflow: hidden;
 }
 
 .weather-background-wrapper {
   position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
   visibility: hidden;
 }
 
@@ -80,6 +82,12 @@ body {
   position: absolute;
 }
 
+.weather-search-title {
+  text-align: center;
+  font-size: 32px;
+  color: #FFFFFF;
+}
+
 #search-form {
   position: relative;
   height: 50px;
@@ -116,6 +124,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  text-align: center;
 }
 
 .form-input:focus {

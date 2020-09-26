@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         form_input = document.querySelector('.form-input'),
         error_message = document.querySelector('.error-message'),
         loader = document.querySelector('.loader'),
-        weather_background = document.querySelector('.weather-background'),
         weather_background_wrapper = document.querySelector('.weather-background-wrapper'),
         confirm_data_close = document.querySelector('.confirm-data-close');
 
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         weather_data_main_cloudiness = document.querySelector('.weather-data-main-cloudiness'),
         weather_data_main_wind_speed = document.querySelector('.weather-data-main-wind-speed'),
         weather_data_main_time = document.querySelector('.weather-data-main-time'),
-        weather_data_main_icon = document.querySelector('.weather-data-main-icon');
+        weather_data_main_icon_img = document.querySelector('.weather-data-main-icon-img');
 
     slider_previous_button.addEventListener('click', () => { move(false) });
     slider_next_button.addEventListener('click', () => { move(true) });
@@ -55,15 +54,26 @@ document.addEventListener("DOMContentLoaded", () => {
             //TODO
             Promise.all([fetch(api.url + "weather?q=" + form_input.value + "&appid=" + api.key + "&units=" + api.units), fetch(api.url + "forecast?q=" + form_input.value + "&cnt=" + api.days + "&appid=" + api.key + "&units=" + api.units)])
                 .then(async ([currentData, forecastData]) => {
-                    const dailyData = await currentData.json();
-                    const hourData = await forecastData.json();
-                    return [dailyData, hourData];
+                    if (currentData.status === 404 || forecastData.status === 404) {
+                        throw new Error('City not found');
+                    }
+                    else if (currentData.status === 404 || forecastData.status === 404) {
+                        throw new Error('Error 401 - contact the site administrator');
+                    }
+                    else if (currentData.status === 404 || forecastData.status === 404) {
+                        throw new Error('Error 429 - queries exceeded');
+                    }
+                    else {
+                        const dailyData = await currentData.json();
+                        const hourData = await forecastData.json();
+                        return [dailyData, hourData];
+                    }
                 })
                 .then((data) => {
                     showResult(data);
                 })
                 .catch((error) => {
-                    error_message.innerText = "Error: " + error.message;
+                    error_message.innerText = error.message;
                     loader.style.visibility = "hidden";
                     weather_search.style.visibility = "visible";
                 })
@@ -81,16 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function showResult(data) {
-        console.log(data);
 
         error_message.innerText = "";
 
         //Current weather data
         const { weather: [{ main: currentWeather, icon: currentIcon }], main: { temp: currentTemp, pressure: currentPressure, humidity: currentHumidity }, wind: { speed: currentWindSpeed }, clouds: { all: currentCloudiness }, sys: { country: currentCountry }, name: cityName } = data[0];
 
-        weather_background.innerHTML = setBackground(currentIcon);
-        weather_background_wrapper.innerHTML = setBackground(currentIcon);
-        weather_data_main_icon.innerHTML = chooseIkone(currentIcon);
+        weather_data_main_icon_img.src = chooseIkone(currentIcon);
         weather_data_main_status.innerText = currentWeather;
         weather_data_main_location.innerText = cityName + ", " + currentCountry;
         weather_data_main_temp.innerText = Math.round(currentTemp) + " \u00B0C";
@@ -129,7 +136,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let icon = document.createElement('div');
             icon.classList.add('weather-data-daily-icon');
-            icon.innerHTML = chooseIkone(hourIcon);
+
+            let iconImg = document.createElement('img');
+            iconImg.src = chooseIkone(hourIcon);
+
+            icon.appendChild(iconImg);
 
             let temp = document.createElement('div');
             temp.classList.add('weather-data-daily-temp');
@@ -144,17 +155,15 @@ document.addEventListener("DOMContentLoaded", () => {
         weather_data_daily_slider.innerHTML = "";
         weather_data_daily_slider.appendChild(fragment);
 
-        loader.style.visibility = "hidden";
-        weather_cnt.style.visibility = "visible";
-        weather_background_wrapper.style.visibility = "visible";
+        //Set Background
+        setBackground(currentIcon);
     }
 
     //TODO
     function chooseIkone(icon) {
-        return '<img src="img/icon/wi-' + icon + '.svg"/>';
+        return "img/icon/wi-" + icon + ".svg";
     }
 
-    //TODO
     function setBackground(status) {
         //Change the background according to the weather
 
@@ -165,9 +174,21 @@ document.addEventListener("DOMContentLoaded", () => {
         else if (status === "09n") { status = "10n" }
         else if (status === "11d" || status === "11n") { status = "11" }
 
+        let weather_background_wrapper_img = document.querySelector('.weather-background-wrapper-img');
+        let weather_background_img = document.querySelector('.weather-background-img');
 
-        return '<img src="img/background/background-' + status + '.jpg" alt="">';
-        //return '<img src="img/icon/wi-' + status + '.svg"/>';
+        const img = new Image();
+
+        img.addEventListener("load", () => {
+            weather_background_wrapper_img.src = img.src;
+            weather_background_img.src = img.src
+
+            loader.style.visibility = "hidden";
+            weather_cnt.style.visibility = "visible";
+            weather_background_wrapper.style.visibility = "visible";
+        });
+
+        img.src = "img/background/background-" + status + ".jpg";
     }
 
     confirm_data_close.addEventListener('click', () => {
