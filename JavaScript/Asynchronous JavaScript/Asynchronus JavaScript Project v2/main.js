@@ -159,7 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
         setBackground(currentIcon);
     }
 
-    //TODO
     function chooseIkone(icon) {
         return "img/icon/wi-" + icon + ".svg";
     }

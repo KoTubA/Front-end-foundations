@@ -29,6 +29,11 @@ body {
     overflow: hidden;
 }
 
+video {
+    position: absolute;
+    width: 100%;
+}
+
 .weather-background-wrapper {
     position: absolute;
     top: 0;
