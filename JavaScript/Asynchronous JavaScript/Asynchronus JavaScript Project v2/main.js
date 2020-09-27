@@ -51,16 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
             loader.style.visibility = "visible";
             weather_search.style.visibility = "hidden";
 
-            //TODO
             Promise.all([fetch(api.url + "weather?q=" + form_input.value + "&appid=" + api.key + "&units=" + api.units), fetch(api.url + "forecast?q=" + form_input.value + "&cnt=" + api.days + "&appid=" + api.key + "&units=" + api.units)])
                 .then(async ([currentData, forecastData]) => {
                     if (currentData.status === 404 || forecastData.status === 404) {
                         throw new Error('City not found');
                     }
-                    else if (currentData.status === 404 || forecastData.status === 404) {
+                    else if (currentData.status === 401 || forecastData.status === 401) {
                         throw new Error('Error 401 - contact the site administrator');
                     }
-                    else if (currentData.status === 404 || forecastData.status === 404) {
+                    else if (currentData.status === 429 || forecastData.status === 429) {
                         throw new Error('Error 429 - queries exceeded');
                     }
                     else {
