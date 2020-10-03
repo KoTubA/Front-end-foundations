@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <title>ES6 Classes and inheritance</title>
+</head>
+
+<body>
+    <div class="animals-world">
+        <div class="animals-category-wrapper">
+            <div class="animals-category-cnt">
+                <div id="fish" class="animals-category">
+                    <div class="animals-category-description">
+                        <div class="animals-name-group">Fish</div>
+                        <div class="animals-image">
+                            <img src="./img/fish.png" alt="Fish">
+                        </div>
+                    </div>
+                </div>
+                <div id="amphibians" class="animals-category">
+                    <div class="animals-category-description">
+                        <div class="animals-name-group">Amphibians</div>
+                        <div class="animals-image">
+                            <img src="./img/amphibians.png" alt="Amphibians">
+                        </div>
+                    </div>
+                </div>
+                <div id="reptiles" class="animals-category">
+                    <div class="animals-category-description">
+                        <div class="animals-name-group">Reptiles</div>
+                        <div class="animals-image">
+                            <img src="./img/reptiles.png" alt="Reptiles">
+                        </div>
+                    </div>
+                </div>
+                <div id="birds" class="animals-category">
+                    <div class="animals-category-description">
+                        <div class="animals-name-group">Birds</div>
+                        <div class="animals-image">
+                            <img src="./img/birds.png" alt="Birds">
+                        </div>
+                    </div>
+                </div>
+                <div id="mammals" class="animals-category">
+                    <div class="animals-category-description">
+                        <div class="animals-name-group">Mammals</div>
+                        <div class="animals-image">
+                            <img src="./img/mammals.png" alt="Mammals">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="animals-add-object">
+                <button class="add-animal" aria-label="Add an animal"></button>
+            </div>
+        </div>
+        <div class="animals-form-wrapper">
+            <div class="animals-form-cnt">
+                <h2>Add an animal</h2>
+                <form action="" id="animals-form">
+                    <select class="form-select" name="category">
+                        <option disabled selected value style="display: none;"></option>
+                        <option value="fish">Fish</option>
+                        <option value="amphibians">Amphibians</option>
+                        <option value="reptiles">Reptiles</option>
+                        <option value="birds">Birds</option>
+                        <option value="mammals">Mammals</option>
+                    </select>
+                    <div class="label-input-form label-input-all">
+                        <input class="form-control form-input-name" type="text" name="name" spellcheck="false"
+                            placeholder="Name">
+                    </div>
+                    <div class="label-input-form label-input-all">
+                        <input class="form-control form-input-weight" type="number" name="weight" spellcheck="false"
+                            placeholder="Weight">
+                    </div>
+                    <div class="label-input-form label-input-fish">
+                        <input class="form-control form-input-immersion-depth" type="number" name="immersion-depth"
+                            spellcheck="false" placeholder="Immersion depth">
+                    </div>
+                    <div class="label-input-form label-input-amphibians">
+                        <input class="form-control form-input-food" type="text" name="food" spellcheck="false"
+                            placeholder="Food">
+                    </div>
+                    <div class="label-input-form label-input-reptiles">
+                        <input class="form-control form-input-group" type="text" name="group" spellcheck="false"
+                            placeholder="Group">
+                    </div>
+                    <div class="label-input-form label-input-birds">
+                        <input class="form-control form-input-wingspan" type="text" name="wingspan" spellcheck="false"
+                            placeholder="Wingspan">
+                    </div>
+                    <div class="label-input-form label-input-mammals">
+                        <input class="form-control form-input-occurrence" type="text" name="occurrence"
+                            spellcheck="false" placeholder="Occurrence">
+                    </div>
+                    <button type="submit" class="btn-primary">Add</button>
+                </form>
+                <div class="confirm-data-close">
+                    <svg height="365.696pt" viewBox="0 0 365.696 365.696" width="365.696pt"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="animals-list">
+            <div class="animals-list-cnt">
+                <div class="animals-list-title"></div>
+                <div class="animals-list-data"></div>
+                <div class="confirm-data-close">
+                    <svg height="365.696pt" viewBox="0 0 365.696 365.696" width="365.696pt"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="animal-overlay"></div>
+    </div>
+    <script src="main.js" type="module"></script>
+</body>
+
+</html>

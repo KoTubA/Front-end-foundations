@@ -1,0 +1,70 @@
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body, .status-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.load-data {
+  background-color: #3e60b7;
+  border: 2px solid #3e60b7;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.status-cnt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 20px;
+  min-width: 250px;
+  margin-left: 10px;
+}
+
+.status-wrapper {
+  padding: 5px 0px;
+}
+
+.status-icon {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.invisible-icon {
+  position: absolute;
+  visibility: hidden;
+  cursor: none;
+  z-index: -1;
+  top: -100vh;
+}
+/*# sourceMappingURL=main.css.map */

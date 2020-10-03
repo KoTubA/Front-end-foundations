@@ -44,7 +44,7 @@ body {
 
 .third-cnt-article {
     @extend %grid-template-mobile;
-    grid-template-rows: auto 350px;
+    grid-template-rows: auto 310px;
     grid-auto-rows: 120px;
     align-content: start;
 }

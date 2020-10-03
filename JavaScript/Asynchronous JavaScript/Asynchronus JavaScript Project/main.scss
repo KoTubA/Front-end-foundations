@@ -1,0 +1,57 @@
+@import '_colors';
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+%flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+    @extend %flexbox;
+    flex-direction: column;
+}
+
+
+.load-data {
+    background-color: $button-color;
+    border: 2px solid $button-color;
+    border-radius: 4px;
+    color: $white-color;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.status-cnt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    min-width: 250px;
+    margin-left: 10px;
+}
+
+.status-wrapper {
+    @extend %flexbox;
+    padding: 5px 0px;
+}
+
+.status-icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.invisible-icon {
+    position: absolute;
+    visibility: hidden;
+    cursor: none;
+    z-index: -1;
+    top: -100vh;
+}
