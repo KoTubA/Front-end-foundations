@@ -127,4 +127,37 @@ for (const [index, color] of colors.entries()) {
     console.log(`${color} is at index ${index}`);
 }
 
-//Symbol, Generators, Promies, Collections (Map, Set), Extensions (array, object, string), Proxy & Reflection
+/* 7. Promise */
+
+const newPromise = new Promise((resolve, reject) => {
+    if (true) {
+        resolve("😁");
+    } else {
+        reject("😥");
+    }
+});
+
+newPromise
+    .then(result => { console.log(result) })
+    .catch(error => console.error(error));
+
+//Promise.all(), Promise.allSettled(), Promise.race(), Promise.finally()
+function checkData1() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => { resolve("👍"); }, 1000)
+    });
+}
+
+function checkData2() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => { resolve("👍"); }, 3000)
+    });
+}
+
+Promise.all([checkData1(), checkData2()])
+    .then(resp => { console.log(resp); })
+    .catch(err => { console.log(err); });
+
+
+/*   Others:   */
+//Symbol, Generators, Collections (Map, Set), Extensions (array, object, string), Proxy & Reflection

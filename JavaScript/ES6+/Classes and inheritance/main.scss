@@ -77,7 +77,8 @@ body {
     position: absolute;
     opacity: 0;
     transition: 0.3s opacity ease;
-    font-size: 21px;
+    font-size: 24px;
+    font-family: 'Sansita Swashed', cursive;
 }
 
 .animals-image {
@@ -101,7 +102,7 @@ body {
     color: $white-color;
     background-color: $add-color;
     outline: none;
-    transition: 0.5s transform ease;
+    transition: 0.5s transform cubic-bezier(0.22, 0.61, 0.36, 1);
     cursor: pointer;
 }
 
@@ -110,7 +111,7 @@ body {
 }
 
 .add-animal:hover {
-    transform: rotate(180deg) scale(1.1);
+    transform: scale(1.1);
 }
 
 .animals-form-wrapper, .animals-list {
@@ -134,6 +135,9 @@ body {
 
 .animals-form-wrapper h2 {
     margin-top: 0px;
+    font-weight: 400;
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 32px;
 }
 
 #animals-form {
@@ -213,8 +217,9 @@ body {
     justify-content: center;
     font-size: 32px;
     width: 100%;
-    text-transform: uppercase;
-    padding-bottom: 5px;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+    font-family: 'Sansita Swashed', cursive;
 }
 
 .animals-list-data {
@@ -243,10 +248,19 @@ body {
     background-color: $table-header-bg-color;
 }
 
+.animals-data-header .animals-data {
+    font-weight: 500;
+}
+
 .animals-data-row {
     border-bottom: 1px solid $table-border-color;
 }
 
 .animals-data-row:last-child {
     border-bottom: none;
+}
+
+.animals-data-empty {
+    display: flex;
+    justify-content: center;
 }

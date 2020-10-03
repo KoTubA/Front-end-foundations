@@ -23,7 +23,7 @@ body {
 .animals-world {
   width: 100%;
   min-height: 100vh;
-  background-color: #0b5d9d;
+  background-color: #2392e9;
   color: #FFFFFF;
   position: relative;
 }
@@ -69,7 +69,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
   opacity: 0;
   -webkit-transition: 0.3s opacity ease;
@@ -87,7 +87,8 @@ body {
   opacity: 0;
   -webkit-transition: 0.3s opacity ease;
   transition: 0.3s opacity ease;
-  font-size: 21px;
+  font-size: 24px;
+  font-family: 'Sansita Swashed', cursive;
 }
 
 .animals-image {
@@ -110,12 +111,12 @@ body {
   border-radius: 50%;
   border: none;
   color: #FFFFFF;
-  background-color: #00b549;
+  background-color: #1bdf6a;
   outline: none;
-  -webkit-transition: 0.5s -webkit-transform ease;
-  transition: 0.5s -webkit-transform ease;
-  transition: 0.5s transform ease;
-  transition: 0.5s transform ease, 0.5s -webkit-transform ease;
+  -webkit-transition: 0.5s -webkit-transform cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: 0.5s -webkit-transform cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: 0.5s transform cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: 0.5s transform cubic-bezier(0.22, 0.61, 0.36, 1), 0.5s -webkit-transform cubic-bezier(0.22, 0.61, 0.36, 1);
   cursor: pointer;
 }
 
@@ -124,8 +125,8 @@ body {
 }
 
 .add-animal:hover {
-  -webkit-transform: rotate(180deg) scale(1.1);
-          transform: rotate(180deg) scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .animals-form-wrapper, .animals-list {
@@ -137,7 +138,7 @@ body {
 }
 
 .animals-form-cnt, .animals-list-cnt {
-  background-color: #014385;
+  background-color: #0f71bd;
   position: relative;
   padding: 60px 80px;
   -webkit-box-orient: vertical;
@@ -155,6 +156,9 @@ body {
 
 .animals-form-wrapper h2 {
   margin-top: 0px;
+  font-weight: 400;
+  font-family: 'Sansita Swashed', cursive;
+  font-size: 32px;
 }
 
 #animals-form {
@@ -191,9 +195,9 @@ body {
 }
 
 .btn-primary {
-  background-color: #00b549;
+  background-color: #1bdf6a;
   color: #FFFFFF;
-  border-color: #00b549;
+  border-color: #1bdf6a;
   width: 100%;
   margin-top: 10px;
   cursor: pointer;
@@ -242,8 +246,9 @@ body {
           justify-content: center;
   font-size: 32px;
   width: 100%;
-  text-transform: uppercase;
-  padding-bottom: 5px;
+  text-transform: capitalize;
+  padding-bottom: 10px;
+  font-family: 'Sansita Swashed', cursive;
 }
 
 .animals-list-data {
@@ -274,11 +279,24 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+.animals-data-header .animals-data {
+  font-weight: 500;
+}
+
 .animals-data-row {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .animals-data-row:last-child {
   border-bottom: none;
+}
+
+.animals-data-empty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=main.css.map */

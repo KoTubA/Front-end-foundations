@@ -1,5 +1,10 @@
 @import '_colors';
 
+:root {
+    --error-color: #dc3545;
+}
+
+
 *, *::after, *::before {
     box-sizing: border-box;
 }
@@ -67,12 +72,6 @@ body {
     position: absolute;
 }
 
-.weather-search-title {
-    text-align: center;
-    font-size: 32px;
-    color: $white-color;
-}
-
 #search-form {
     @extend %flexbox;
     position: relative;
@@ -84,8 +83,8 @@ body {
     width: 100%;
     flex: 1;
     height: 100%;
-    border: 2px solid #c9c9c9;
-    border-radius: 130px;
+    border: 2px solid $form-color;
+    border-radius: 130px 0px 0px 130px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     font-size: 14px;
     padding: 10px 50px 10px 20px;
@@ -93,11 +92,15 @@ body {
 }
 
 .weather-search.error .form-input {
-    border-color: $error-color;
+    border-color: var(--error-color);
+}
+
+.weather-search.error .search-button {
+    background-color: var(--error-color) !important;
 }
 
 .error-message {
-    color: $error-color;
+    color: var(--error-color);
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -108,19 +111,22 @@ body {
     border-color: $form-focus-color;
 }
 
+.form-input:focus + .search-button {
+    background-color: $form-focus-color;
+}
+
 .search-button {
-    position: absolute;
-    right: 0;
     @extend %flexbox;
     padding: 10px;
     height: 50px;
     width: 50px;
-    background-color: transparent;
+    background-color: $form-color;
+    border-radius: 0px 130px 130px 0px;
     outline: none;
     border: none;
 
     svg {
-        fill: $form-focus-color;
+        fill: $white-color;
     }
 }
 
