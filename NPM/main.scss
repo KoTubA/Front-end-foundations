@@ -1,0 +1,34 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #CE3434;
+    transform: scale(0);
+    transition: .3s transform linear;
+}
+
+h2 {
+    font-size: 48px;
+    color: #242424;
+    cursor: pointer;
+}
+
+span {
+    color: #CE3434;
+}
