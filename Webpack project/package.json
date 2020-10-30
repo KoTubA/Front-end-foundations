@@ -1,0 +1,12 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "Simple webpack project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Szymon Kotarba",
+  "license": "ISC",
+  "devDependencies": {}
+}
