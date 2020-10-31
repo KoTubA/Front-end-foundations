@@ -1,0 +1,30 @@
+{
+  "name": "webpack_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "browserslist": [
+    "last 4 version"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Szymon Kotarba",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "css-loader": "^5.0.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^5.0.0-alpha.7",
+    "mini-css-extract-plugin": "^1.2.1",
+    "postcss-loader": "^4.0.4",
+    "sass": "^1.28.0",
+    "sass-loader": "^10.0.4",
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.5",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
+  },
+  "dependencies": {}
+}
