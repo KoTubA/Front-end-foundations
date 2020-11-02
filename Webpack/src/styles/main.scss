@@ -1,13 +1,5 @@
 @import '_colors';
 
-/*
-The designs were created to the following widths:
-
-- Mobile: 375px
-- Desktop: 1440px
-
-*/
-
 %flexbox {
     display: flex;
     justify-content: center;
@@ -15,7 +7,7 @@ The designs were created to the following widths:
 }
 
 %focus {
-    outline: rgb(104, 190, 205) dotted 3px;
+    outline: $bright-red dotted 3px;
 }
 
 %button {
@@ -56,40 +48,104 @@ body {
     color: $dark-grayish-blue;
 }
 
+.app-wrapper {
+    position: relative;
+}
+
+.home, .features, .slider, .summary, .footer {
+    @extend %flexbox;
+    position: relative;
+}
+
+.home-section, .summary-section, .features-section, .footer-section {
+    width: 100%;
+}
+
+.home::before {
+    @extend %pattern;
+    background: url('../assets/svg/bg-tablet-pattern.svg') no-repeat;
+    background-position: top -6rem right -8rem;
+    background-size: 28rem 28rem;
+}
+
 .home-section {
     @extend %flexbox;
     flex-direction: column;
-    position: relative;
     padding: 20px 30px;
-
-    &::before {
-        @extend %pattern;
-        background: url('../assets/svg/bg-tablet-pattern.svg') no-repeat;
-        background-position: top -6rem right -8rem;
-        background-size: 28rem 28rem;
-    }
+    position: relative;
 }
 
 .nav-cnt {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0px;
+    padding: 30px 0px;
     width: 100%;
+}
+
+.nav-list {
+    list-style: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    padding-bottom: 0.5rem;
+    z-index: 4;
+}
+
+.overlay {
+    display: none;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(29, 28, 28, 0.616)) );
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    position: fixed;
+    z-index: 3;
+}
+
+.nav-items {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0rem .2rem;
+
+    a {
+        color: $dark-blue;
+        text-decoration: none;
+        padding: .5rem;
+
+        &:hover {
+            color: $dark-grayish-blue;
+        }
+
+        &:focus {
+            @extend %focus;
+        }
+    }
 }
 
 .company-logo {
     width: 120px;
 }
 
+.company-logo-link:focus {
+    @extend %focus;
+}
+
 .nav-toggler {
     background-color: transparent;
     border: none;
     padding: 5px;
+    z-index: 4;
+    cursor: pointer;
 
     &:focus {
         @extend %focus;
     }
+}
+
+.main-btn-nav {
+    display: none;
 }
 
 .company-description-wrapper {
@@ -113,12 +169,11 @@ body {
     font-weight: 700;
     font-size: 2.4rem;
     line-height: 1.3;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .home-subtitle {
     text-align: center;
-    font-size: 1.1rem;
     margin-bottom: 30px;
     line-height: 1.8;
 }
@@ -128,9 +183,21 @@ body {
     padding: 1rem 2rem;
     @extend %button;
 
-    &::hover {
+    &:focus {
+        @extend %focus;
+    }
+
+    &:hover {
         @extend %button_hover;
     }
+}
+
+.main-btn-opposed:hover {
+    color: #fafafa;
+}
+
+.main-btn-opposed:focus {
+    outline: $white-color dotted 3px;
 }
 
 .main-btn-opposed {
@@ -138,25 +205,25 @@ body {
     background: $very-light-gray;
 }
 
-.features-section {
-    display: grid;
-    position: relative;
-    grid-template-columns: 1fr;
-    padding: 70px 15px 30px 15px;
-    line-height: 1.8;
+.features::before {
+    @extend %pattern;
+    background: url('../assets/svg/bg-tablet-pattern.svg') no-repeat;
+    background-size: 20rem 20rem;
+    margin-top: -33rem;
+    background-position: top 0rem right -12rem;
+}
 
-    &::before {
-        @extend %pattern;
-        background: url('../assets/svg/bg-tablet-pattern.svg') no-repeat;
-        background-size: 20rem 20rem;
-        transform: translate(65%, -25%);
-    }
+.features-section {
+    @extend %flexbox;
+    flex-direction: column;
+    padding: 50px 15px 30px 15px;
+    line-height: 1.8;
 }
 
 .features-header {
     @extend %flexbox;
     flex-direction: column;
-    padding: 10px 0px;
+    padding: 10px;
 }
 
 .features-header-title {
@@ -165,25 +232,23 @@ body {
     font-size: 2rem;
     text-align: center;
     line-height: 1.5;
-    margin: 0px;
+    margin: 0px 0px 5px 0px;
 }
 
 .features-header-details {
     text-align: center;
-    padding: 0px 10px;
     font-size: 0.9rem;
 }
 
 .features-list-wrapper {
     @extend %flexbox;
     flex-direction: column;
-    padding: 20px 0px;
+    padding: 15px 0px;
 }
 
 .features-list-header {
     display: flex;
     align-items: center;
-    position: relative;
     width: 100%;
 
     h4 {
@@ -191,22 +256,12 @@ body {
         margin: 0;
         color: $dark-blue;
     }
-
-    &::before {
-        content: '';
-        background-color: $very-pale-red;
-        width: 100vw;
-        left: 0;
-        height: 100%;
-        position: absolute;
-        z-index: -1;
-        border-radius: 2.5rem;
-    }
 }
 
 .features-list-header-number {
     @extend %flexbox;
     @extend %button;
+    cursor: default;
     padding: 0.5rem 1.5rem;
 }
 
@@ -233,6 +288,10 @@ body {
 .slider-cnt {
     @extend %flexbox;
     padding: 40px 20px 20px 20px;
+}
+
+.slider-card-wrapper {
+    display: flex;
 }
 
 .slider-card {
@@ -285,37 +344,48 @@ body {
     background-color: $bright-red;
 }
 
-.summary-section {
-    @extend %flexbox;
-    z-index: 1;
-    position: relative;
-    flex-direction: column;
+.summary {
     background-color: $bright-red;
-    line-height: 1.8;
-    padding: 50px 30px 80px 30px;
 
     &::before {
         @extend %pattern;
         background: url('../assets/svg/bg-simplify-section-mobile.svg') no-repeat;
         background-position: top 3rem left 0rem;
+        z-index: 1;
     }
+}
 
+.summary-section {
+    @extend %flexbox;
+    z-index: 1;
+    position: relative;
+    flex-direction: column;
+    line-height: 1.8;
+    padding: 50px 30px 80px 30px;
 }
 
 .summary-section-title {
-    text-align: center;
+    @extend %flexbox;
     color: $white-color;
     font-size: 2.3rem;
+    text-align: center;
+}
+
+.summary-section-btn {
+    @extend %flexbox;
+}
+
+.footer {
+    background-color: $very-dark-blue;
 }
 
 .footer-section {
-    background-color: $very-dark-blue;
     padding: 30px 20px;
     display: grid;
 }
 
 .footer-section-form {
-    padding-top: 30px;
+    padding: 30px 5px 0px 5px;
 }
 
 .footer-section-form-cnt {
@@ -333,12 +403,24 @@ body {
     &::placeholder {
         color: $dark-grayish-blue;
     }
+
+    &:focus {
+        @extend %focus;
+    }
 }
 
 .form-submit {
     padding: 1rem 1.9rem;
     margin-left: 0.5rem;
     @extend %button;
+
+    &:hover {
+        @extend %button_hover;
+    }
+
+    &:focus {
+        @extend %focus;
+    }
 }
 
 .footer-menu-cnt {
@@ -352,18 +434,26 @@ body {
     margin-block-start: 0;
     margin-block-end: 0;
     padding-inline-start: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 0.9rem;
 
     li {
-        margin: 15px;
-        font-size: 0.9rem;
+        margin: 10px;
 
         a {
             text-decoration: none;
             color: $white-color;
-        }
 
-        &:hover {
-            color: $bright-red;
+            &:hover {
+                color: $bright-red;
+            }
+
+            &:focus {
+                @extend %focus;
+            }
         }
     }
 }
@@ -384,6 +474,14 @@ body {
     img {
         width: 35px;
         cursor: pointer;
+
+        &:hover {
+            filter: invert(51%) sepia(51%) saturate(3947%) hue-rotate(339deg) brightness(99%) contrast(92%);
+        }
+    }
+
+    a:focus {
+        @extend %focus;
     }
 }
 
@@ -391,6 +489,11 @@ body {
     padding: 50px 0px;
     color: $white-color;
     @extend %flexbox;
+
+    a {
+        width: auto;
+        @extend %flexbox;
+    }
 
     img {
         cursor: pointer;
@@ -401,3 +504,5 @@ body {
     @extend %flexbox;
     font-size: 0.8rem;
 }
+
+@import '_media';
