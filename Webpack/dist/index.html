@@ -24,7 +24,7 @@
                         <img src="assets/svg/logo.svg" alt="company logo" class="company-logo">
                     </a>
                     <nav class="nav">
-                        <ul class="nav-list nav-list-mobile">
+                        <ul class="nav-list">
                             <li class="nav-items">
                                 <a href="#">Pricing</a>
                             </li>
@@ -43,7 +43,10 @@
                         </ul>
                     </nav>
                     <button class="main-btn main-btn-nav">Get Started</button>
-                    <button class="nav-toggler"><img src="assets/svg/icon-hamburger.svg" alt="="></button>
+                    <button class="nav-toggler">
+                        <img src="assets/svg/icon-hamburger.svg" alt="=">
+                        <img src="assets/svg/icon-close.svg" alt="X">
+                    </button>
                 </div>
                 <div class="company-description-wrapper">
                     <div class="company-descritpion-illustration-intro">
@@ -173,9 +176,12 @@
         <section class="footer">
             <div class="footer-section">
                 <div class="footer-section-form">
-                    <form class="footer-section-form-cnt">
-                        <input type="email" id="email" placeholder="Updates in your inbox..">
-                        <button type="submit" class="form-submit">Go</button>
+                    <form class="footer-section-form-cnt" novalidate>
+                        <div class="form-cnt-data">
+                            <input type="email" id="email" placeholder="Updates in your inbox..">
+                            <button type="submit" class="form-submit">Go</button>
+                        </div>
+                        <p class="invalid-data-alert">Please insert a valid email</p>
                     </form>
                 </div>
                 <div class="footer-menu-cnt">

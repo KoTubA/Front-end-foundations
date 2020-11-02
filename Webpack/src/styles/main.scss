@@ -44,12 +44,12 @@ body {
     margin: 0;
     font-family: 'Be Vietnam', sans-serif;
     background-color: $white-color;
-    overflow-x: hidden;
     color: $dark-grayish-blue;
 }
 
 .app-wrapper {
     position: relative;
+    overflow: hidden;
 }
 
 .home, .features, .slider, .summary, .footer {
@@ -92,6 +92,10 @@ body {
     z-index: 4;
 }
 
+.nav-list-visible {
+    display: flex !important;
+}
+
 .overlay {
     display: none;
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(29, 28, 28, 0.616)) );
@@ -102,6 +106,10 @@ body {
     height: 100vh;
     position: fixed;
     z-index: 3;
+}
+
+.overlay-visible {
+    display: flex;
 }
 
 .nav-items {
@@ -141,6 +149,21 @@ body {
 
     &:focus {
         @extend %focus;
+    }
+
+    img:last-child {
+        display: none;
+    }
+}
+
+.nav-toggler-visible {
+
+    img:first-child {
+        display: none;
+    }
+
+    img:last-child {
+        display: flex;
     }
 }
 
@@ -250,6 +273,18 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
+    position: relative;
+
+    &::before {
+        content: '';
+        background-color: $very-pale-red;
+        width: 100vw;
+        left: 0;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        border-radius: 2.5rem;
+    }
 
     h4 {
         padding-left: 1rem;
@@ -367,7 +402,7 @@ body {
 .summary-section-title {
     @extend %flexbox;
     color: $white-color;
-    font-size: 2.3rem;
+    font-size: 2.2rem;
     text-align: center;
 }
 
@@ -391,6 +426,32 @@ body {
 .footer-section-form-cnt {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+.form-cnt-data {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-section-form-cnt.invalid-data {
+    input {
+        border: 2px solid $error-color;
+        color: $error-color;
+    }
+
+    .invalid-data-alert {
+        visibility: visible;
+    }
+}
+
+.invalid-data-alert {
+    font-style: italic;
+    visibility: hidden;
+    color: $error-color;
+    font-size: 0.8rem;
+    padding-left: 0.7rem;
+    margin: 0.5rem;
 }
 
 .footer-section-form-cnt input {
@@ -425,7 +486,7 @@ body {
 
 .footer-menu-cnt {
     display: grid;
-    padding: 50px 20px;
+    padding: 30px 20px 50px 20px;
     grid-template-columns: 1fr 1fr;
 }
 
@@ -472,7 +533,7 @@ body {
     width: 100%;
 
     img {
-        width: 35px;
+        width: 30px;
         cursor: pointer;
 
         &:hover {
