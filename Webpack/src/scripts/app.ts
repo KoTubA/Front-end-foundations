@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const slider_length = slider_card.length;
 
         //Margin left and right card element
-        const style = slider_card[0].currentStyle || window.getComputedStyle(slider_card[0]);
+        const style = window.getComputedStyle(slider_card[0]);
 
         const card_width = slider_card[0].clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight)
 
