@@ -310,6 +310,7 @@ body {
     flex-direction: column;
     line-height: 1.8;
     padding-bottom: 50px;
+    overflow: hidden;
 }
 
 .slider-header {
@@ -322,29 +323,33 @@ body {
 
 .slider-cnt {
     @extend %flexbox;
-    padding: 40px 20px 20px 20px;
+    padding: 40px 0px 20px 0px;
+    overflow: hidden;
+    width: 100%;
 }
 
 .slider-card-wrapper {
     display: flex;
+    width: 100%;
 }
 
 .slider-card {
     @extend %flexbox;
     flex-direction: column;
     position: relative;
-    padding-top: 40px;
+    background-color: $very-light-gray;
+    margin: 40px 20px 0px 20px;
+    flex: 0 0 calc(100% - 40px);
 }
 
 .slider-card-photo {
     width: 80px;
-    top: 0px;
+    top: -40px;
     position: absolute;
 }
 
 .slider-card-cnt {
     @extend %flexbox;
-    background-color: $very-light-gray;
     flex-direction: column;
     padding: 40px 20px 30px;
     text-align: center;

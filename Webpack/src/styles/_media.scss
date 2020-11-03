@@ -271,6 +271,8 @@
 
     .slider-section {
         padding-bottom: 180px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
     .summary::before {
@@ -396,6 +398,14 @@
 
     .overlay-visible {
         display: none;
+    }
+
+    .slider-card {
+        flex: 0 0 calc(40% - 40px);
+    }
+
+    .slider-card-wrapper {
+        transform: translateX(-10%);
     }
 
 }
