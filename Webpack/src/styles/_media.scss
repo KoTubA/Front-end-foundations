@@ -408,6 +408,14 @@
         transform: translateX(-10%);
     }
 
+    .slider-cnt {
+        padding-bottom: 40px;
+    }
+
+    .dots-wrapper {
+        display: none;
+    }
+
 }
 
 @media (min-width: 1170px) {

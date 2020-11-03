@@ -331,6 +331,8 @@ body {
 .slider-card-wrapper {
     display: flex;
     width: 100%;
+    transform: translateX(-100%);
+    transition: .4s ease-in-out;
 }
 
 .slider-card {

@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         nav_list = document.querySelector('.nav-list'),
         overlay = document.querySelector('.overlay'),
         form = document.querySelector('.footer-section-form-cnt'),
-        form_email = document.querySelector('#email');
-
+        form_email = document.querySelector('#email'),
+        slider_wrapper = document.querySelector('.slider-card-wrapper'),
+        dots_slider = document.querySelectorAll('.dots-slider');
 
     //Navigation
     nav_toggler?.addEventListener('click', function (this: typeof nav_toggler) {
@@ -26,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const email = (document.querySelector('#email') as HTMLTextAreaElement).value;
 
-        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
-        if (!re.test(email)) {
+        if (!reg.test(email)) {
             form.classList.add('invalid-data');
         }
     });
@@ -38,5 +39,30 @@ document.addEventListener('DOMContentLoaded', () => {
     form_email?.addEventListener('focus', () => {
         form?.classList.remove('invalid-data');
     });
+
+    //Slider
+    let counter = 2;
+
+    function changeSlide() {
+        const slider_card = document.querySelectorAll('.slider-card');
+        const slider_length = slider_card.length;
+
+        //Margin left and right card element
+        const style = slider_card[0].currentStyle || window.getComputedStyle(slider_card[0]);
+
+        const card_width = slider_card[0].clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight)
+
+        //slider_wrapper.style.transform = `translateX(-${counter * card_width}px)`;
+        slider_wrapper?.appendChild(slider_card[0]);
+
+        dots_slider.forEach(ele => ele.classList.remove("dots-active"));
+
+        dots_slider[counter].classList.add("dots-active");
+
+        (counter < slider_length - 1) ? counter++ : counter = 0;
+
+    }
+
+    let slider = setInterval(changeSlide, 5000);
 
 });
