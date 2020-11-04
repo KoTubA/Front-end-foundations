@@ -63,14 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     slider_wrapper?.addEventListener('transitionend', () => {
-        console.log(counter);
-        console.log(slider_length);
         if (counter === slider_length - 1) {
             slider_wrapper.style.transition = "none";
             slider_wrapper.style.transform = `translateX(${card_width}px)`;
         }
     });
 
-    let slider = setInterval(changeSlide, 5000);
+    setInterval(changeSlide, 5000);
 
 });
