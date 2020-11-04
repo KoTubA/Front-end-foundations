@@ -41,27 +41,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //Slider
-    let counter = 2;
+    let counter = 1;
+    const slider_card = document.querySelectorAll('.main-slider-card');
+    const slider_length = slider_card.length;
+    let style: CSSStyleDeclaration, card_width: number;
 
     function changeSlide() {
-        const slider_card = document.querySelectorAll('.slider-card');
-        const slider_length = slider_card.length;
 
         //Margin left and right card element
-        const style = window.getComputedStyle(slider_card[0]);
+        style = window.getComputedStyle(slider_card[0]);
+        card_width = slider_card[0].clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
 
-        const card_width = slider_card[0].clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight)
+        (counter < slider_length - 1) ? counter++ : counter = 0;
 
-        //slider_wrapper.style.transform = `translateX(-${counter * card_width}px)`;
-        slider_wrapper?.appendChild(slider_card[0]);
+        slider_wrapper.style.transition = "transform .4s ease-in-out";
+        slider_wrapper.style.transform = `translateX(-${counter * card_width}px)`;
 
         dots_slider.forEach(ele => ele.classList.remove("dots-active"));
 
         dots_slider[counter].classList.add("dots-active");
-
-        (counter < slider_length - 1) ? counter++ : counter = 0;
-
     }
+
+    slider_wrapper?.addEventListener('transitionend', () => {
+        console.log(counter);
+        console.log(slider_length);
+        if (counter === slider_length - 1) {
+            slider_wrapper.style.transition = "none";
+            slider_wrapper.style.transform = `translateX(${card_width}px)`;
+        }
+    });
 
     let slider = setInterval(changeSlide, 5000);
 
