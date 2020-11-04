@@ -21,9 +21,6 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                options: {
-                    minimize: false,
-                }
             },
             {
                 test: /\.(scss|sass)$/,
@@ -36,7 +33,7 @@ module.exports = {
                 use: "ts-loader"
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpe?g|gif)$/,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
@@ -61,7 +58,6 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'src/index.html',
-            minify: false
         }),
         new MiniCssExtractPlugin({
             filename: 'app.css',

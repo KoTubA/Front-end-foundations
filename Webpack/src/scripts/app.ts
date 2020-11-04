@@ -2,30 +2,30 @@ import '../index.html';
 import '../styles/main.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const nav_toggler = document.querySelector('.nav-toggler'),
-        nav_list = document.querySelector('.nav-list'),
-        overlay = document.querySelector('.overlay'),
-        form = document.querySelector('.footer-section-form-cnt'),
-        form_email = document.querySelector('#email'),
-        slider_wrapper = document.querySelector('.slider-card-wrapper'),
+    const nav_toggler = document.querySelector('.nav-toggler') as HTMLElement,
+        nav_list = document.querySelector('.nav-list') as HTMLElement,
+        overlay = document.querySelector('.overlay') as HTMLElement,
+        form = document.querySelector('.footer-section-form-cnt') as HTMLFormElement,
+        form_email = document.querySelector('#email') as HTMLInputElement,
+        slider_wrapper = document.querySelector('.slider-card-wrapper') as HTMLElement,
         dots_slider = document.querySelectorAll('.dots-slider');
 
     //Navigation
-    nav_toggler?.addEventListener('click', function (this: typeof nav_toggler) {
-        (nav_list?.classList.contains('nav-list-visible')) ? (nav_list.classList.remove('nav-list-visible'), overlay?.classList.remove('overlay-visible'), this.classList.remove('nav-toggler-visible')) : (nav_list?.classList.add('nav-list-visible'), overlay?.classList.add('overlay-visible'), this.classList.add('nav-toggler-visible'));
+    nav_toggler.addEventListener('click', function () {
+        (nav_list.classList.contains('nav-list-visible')) ? (nav_list.classList.remove('nav-list-visible'), overlay.classList.remove('overlay-visible'), this.classList.remove('nav-toggler-visible')) : (nav_list.classList.add('nav-list-visible'), overlay.classList.add('overlay-visible'), this.classList.add('nav-toggler-visible'));
     });
 
-    overlay?.addEventListener('click', function (this: typeof overlay) {
-        nav_list?.classList.remove('nav-list-visible');
+    overlay.addEventListener('click', function () {
+        nav_list.classList.remove('nav-list-visible');
         this.classList.remove('overlay-visible');
-        nav_toggler?.classList.remove('nav-toggler-visible');
+        nav_toggler.classList.remove('nav-toggler-visible');
     });
 
     //Form
-    form?.addEventListener('submit', (e) => {
+    form.addEventListener('submit', (e: Event) => {
         e.preventDefault();
 
-        const email = (document.querySelector('#email') as HTMLTextAreaElement).value;
+        const email = (document.querySelector('#email') as HTMLInputElement).value;
 
         const reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //Remove the alert when clicking on input
-    form_email?.addEventListener('focus', () => {
-        form?.classList.remove('invalid-data');
+    form_email.addEventListener('focus', () => {
+        form.classList.remove('invalid-data');
     });
 
-    //Slider
+    //Carousel slider
     let counter = 1;
     const slider_card = document.querySelectorAll('.main-slider-card');
     const slider_length = slider_card.length;
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dots_slider[counter].classList.add("dots-active");
     }
 
-    slider_wrapper?.addEventListener('transitionend', () => {
+    slider_wrapper.addEventListener('transitionend', () => {
         if (counter === slider_length - 1) {
             slider_wrapper.style.transition = "none";
             slider_wrapper.style.transform = `translateX(${card_width}px)`;
