@@ -9,7 +9,7 @@ module.exports = {
 
     devtool: 'eval-source-map',
 
-    entry: './src/scripts/app.ts',
+    entry: './src/scripts/app.js',
 
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -29,9 +29,14 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
             },
             {
-                test: /\.ts$/,
-                include: [path.resolve(__dirname, 'src')],
-                use: "ts-loader"
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
             },
             {
                 test: /\.(png|jpe?g|gif)$/,
@@ -50,10 +55,6 @@ module.exports = {
                 }
             }
         ]
-    },
-
-    resolve: {
-        extensions: ['.ts', '.js'],
     },
 
     plugins: [

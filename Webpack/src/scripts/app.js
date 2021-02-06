@@ -2,12 +2,12 @@ import '../index.html';
 import '../styles/main.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const nav_toggler = document.querySelector('.nav-toggler') as HTMLElement,
-        nav_list = document.querySelector('.nav-list') as HTMLElement,
-        overlay = document.querySelector('.overlay') as HTMLElement,
-        form = document.querySelector('.footer-section-form-cnt') as HTMLFormElement,
-        form_email = document.querySelector('#email') as HTMLInputElement,
-        slider_wrapper = document.querySelector('.slider-card-wrapper') as HTMLElement,
+    const nav_toggler = document.querySelector('.nav-toggler'),
+        nav_list = document.querySelector('.nav-list'),
+        overlay = document.querySelector('.overlay'),
+        form = document.querySelector('.footer-section-form-cnt'),
+        form_email = document.querySelector('#email'),
+        slider_wrapper = document.querySelector('.slider-card-wrapper'),
         dots_slider = document.querySelectorAll('.dots-slider');
 
     //Navigation
@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //Form
-    form.addEventListener('submit', (e: Event) => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const email = (document.querySelector('#email') as HTMLInputElement).value;
+        const email = (document.querySelector('#email')).value;
 
         const reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let counter = 1;
     const slider_card = document.querySelectorAll('.main-slider-card');
     const slider_length = slider_card.length;
-    let style: CSSStyleDeclaration, card_width: number;
+    let style, card_width;
 
     function changeSlide() {
 
