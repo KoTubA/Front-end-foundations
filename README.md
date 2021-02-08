@@ -27,6 +27,11 @@ We'll assume you know the basics of the basics, have been building websites for 
 
 As we know, [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) is a descriptive language in which we use tags to define what a given subpage contains. HTML is the most basic building block of the Web. It defines the meaning and structure of web content. Remember, however, that it is worth repeating the issues related to **semantics** and **accessibility** before starting work with frameworks.
 
+### Links:
+- [W3C Accessibility Standards Overview](https://www.w3.org/WAI/standards-guidelines/)
+- [Accessibility - Learn web development | MDN](https://developer.mozilla.org/en-US/docs/Learn/Accessibility)
+- [ARIA HTML Tutorial - What is ARIA & Why it's Important to Use!](https://www.youtube.com/watch?v=0hqhAIjE_8I)
+
 ## CSS
 
 [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) is neglected and underestimated by many people, due to the belief that CSS is only responsible for appearance. Remember, however, that it depends on us how the final product will look like and how it will behave on different devices - whether the interactions will be pleasant for the user, whether the animations that he watches will be smooth.
