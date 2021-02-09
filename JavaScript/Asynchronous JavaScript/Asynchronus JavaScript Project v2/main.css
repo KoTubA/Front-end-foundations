@@ -1,5 +1,6 @@
 :root {
   --error-color: #dc3545;
+  --form-color: #497199;
 }
 
 *, *::after, *::before {
@@ -33,7 +34,7 @@ img {
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #BBDEFB;
+  background-color: #33495F;
   position: relative;
   overflow: hidden;
 }
@@ -71,6 +72,10 @@ body {
   z-index: 3;
 }
 
+.weather-animation {
+  padding-top: 10vh;
+}
+
 .weather-search {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,7 +84,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
+  padding: 0px 20px;
+  height: 100vh;
   -webkit-box-flex: 0;
       -ms-flex: 0 1;
           flex: 0 1;
@@ -88,7 +96,7 @@ body {
 
 #search-form {
   position: relative;
-  height: 50px;
+  max-height: 50px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -100,25 +108,23 @@ body {
       -ms-flex: 1;
           flex: 1;
   height: 100%;
-  border: 2px solid #57aaf8;
+  border: 3px solid #497199;
   border-radius: 130px 0px 0px 130px;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
   font-size: 14px;
   padding: 10px 50px 10px 20px;
   outline: none;
 }
 
 .weather-search.error .form-input {
-  border-color: var(--error-color);
+  border-color: #ff5464;
 }
 
 .weather-search.error .search-button {
-  background-color: var(--error-color) !important;
+  background-color: #ff5464 !important;
 }
 
 .error-message {
-  color: var(--error-color);
+  color: #ff5464;
   font-size: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -130,18 +136,18 @@ body {
 }
 
 .form-input:focus {
-  border-color: #3691e6;
+  border-color: #5889b9;
 }
 
 .form-input:focus + .search-button {
-  background-color: #3691e6;
+  background-color: #5889b9;
 }
 
 .search-button {
   padding: 10px;
   height: 50px;
   width: 50px;
-  background-color: #57aaf8;
+  background-color: #497199;
   border-radius: 0px 130px 130px 0px;
   outline: none;
   border: none;
@@ -149,6 +155,16 @@ body {
 
 .search-button svg {
   fill: #FFFFFF;
+}
+
+.weather-search-shadow {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 130px;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 .weather-cnt {

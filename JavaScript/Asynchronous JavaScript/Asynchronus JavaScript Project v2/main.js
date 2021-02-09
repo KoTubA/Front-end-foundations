@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const api = {
         key: "dd9c76de28a7dee3d4a4dbe15ddd5933",
-        url: "http://api.openweathermap.org/data/2.5/",
+        url: "https://api.openweathermap.org/data/2.5/",
         days: 16,
         units: "metric"
     }
@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     showResult(data);
                 })
                 .catch((error) => {
+                    weather_search.classList.add('error');
                     error_message.innerText = error.message;
                     loader.style.visibility = "hidden";
                     weather_search.style.visibility = "visible";
@@ -96,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //Current weather data
         const { weather: [{ main: currentWeather, icon: currentIcon }], main: { temp: currentTemp, pressure: currentPressure, humidity: currentHumidity }, wind: { speed: currentWindSpeed }, clouds: { all: currentCloudiness }, sys: { country: currentCountry }, name: cityName } = data[0];
 
-        weather_data_main_icon_img.src = chooseIkone(currentIcon);
+        weather_data_main_icon_img.src = chooseIcone(currentIcon);
         weather_data_main_status.innerText = currentWeather;
         weather_data_main_location.innerText = cityName + ", " + currentCountry;
         weather_data_main_temp.innerText = Math.round(currentTemp) + " \u00B0C";
@@ -137,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
             icon.classList.add('weather-data-daily-icon');
 
             let iconImg = document.createElement('img');
-            iconImg.src = chooseIkone(hourIcon);
+            iconImg.src = chooseIcone(hourIcon);
 
             icon.appendChild(iconImg);
 
@@ -158,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setBackground(currentIcon);
     }
 
-    function chooseIkone(icon) {
+    function chooseIcone(icon) {
         return "img/icon/wi-" + icon + ".svg";
     }
 

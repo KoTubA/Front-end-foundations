@@ -2,6 +2,7 @@
 
 :root {
     --error-color: #dc3545;
+    --form-color: #497199;
 }
 
 
@@ -64,10 +65,17 @@ body {
     z-index: 3;
 }
 
+.weather-animation {
+    padding-top: 10vh;
+}
+
 .weather-search {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    max-width: 500px;
+    width: 100%;
+    padding: 0px 20px;
+    height: 100vh;
     flex: 0 1;
     position: absolute;
 }
@@ -75,7 +83,7 @@ body {
 #search-form {
     @extend %flexbox;
     position: relative;
-    height: 50px;
+    max-height: 50px;
     flex: 1;
 }
 
@@ -83,24 +91,23 @@ body {
     width: 100%;
     flex: 1;
     height: 100%;
-    border: 2px solid $form-color;
+    border: 3px solid $form-color;
     border-radius: 130px 0px 0px 130px;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     font-size: 14px;
     padding: 10px 50px 10px 20px;
     outline: none;
 }
 
 .weather-search.error .form-input {
-    border-color: var(--error-color);
+    border-color: $error-color;
 }
 
 .weather-search.error .search-button {
-    background-color: var(--error-color) !important;
+    background-color: $error-color !important;
 }
 
 .error-message {
-    color: var(--error-color);
+    color: $error-color;
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -128,6 +135,17 @@ body {
     svg {
         fill: $white-color;
     }
+}
+
+.weather-search-shadow {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 130px;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
 }
 
 .weather-cnt {
