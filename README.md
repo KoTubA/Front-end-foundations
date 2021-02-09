@@ -1,7 +1,12 @@
 # Front-end-foundations
 > A project for people who know something and want to start working with frameworks.
 
-We'll assume you know the basics of the basics, have been building websites for some time, and would like to move on to frameworks like React, Vue, Angular, etc. Here's my list of things with simple examples that will organize your knowledge and prepare you to start working with frameworks.
+We'll assume you know the basics of the basics, have been building websites for some time, and would like to move on to frameworks like **React, Vue, Angular, etc.** Here's [my list](#table-of-contents) of things with simple examples that will organize your knowledge and prepare you to start working with frameworks.
+
+In a word of introduction, I'd like to highlight two larger examples of the pages I included in the project:
+
+- [Asynchronus JavaScript Project - Weather API](https://github.com/KoTubA/Front-end-foundations/tree/master/JavaScript/Asynchronous%20JavaScript/Asynchronus%20JavaScript%20Project%20v2)
+- [Frontend Mentor - Manage landing page](https://github.com/KoTubA/Front-end-foundations/tree/master/Webpack)
 
 ## Table of Contents
 
