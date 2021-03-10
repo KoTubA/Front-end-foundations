@@ -44,6 +44,7 @@ As we know, [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) is a descr
 Of course, in case we are already entering the stage of application development where we want to learn frameworks, then we will not do without the use of **preprocessors**, because CSS alone very quickly becomes too limited when writing large applications.
 
 ### Links:
+- [CSS Animation Optimization and Performance 101](https://www.youtube.com/watch?v=0Xg6r_MKGJ4)
 - [A Complete Guide to Flexbox | CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Learn Flexbox In 20 Minutes | Learn HTML & CSS | Flexbox Tutorial](https://www.youtube.com/watch?v=FTlczfR82mQ)
 - [A Complete Guide to Grid | CSS-Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)
