@@ -10,78 +10,78 @@ body {
 @-webkit-keyframes collision-effect {
     0% {
         -webkit-transform: translateY(600px);
-                transform: translateY(600px);
+        transform: translateY(600px);
     }
 
     30% {
         -webkit-transform: translateY(0px);
-                transform: translateY(0px);
+        transform: translateY(0px);
     }
 
     55% {
         -webkit-transform: rotate(var(--rotate-first));
-                transform: rotate(var(--rotate-first));
-        border-radius: 0%;;
+        transform: rotate(var(--rotate-first));
+        border-radius: 0%;
     }
 
     80% {
         -webkit-transform: rotate(var(--rotate-later));
-                transform: rotate(var(--rotate-later));
+        transform: rotate(var(--rotate-later));
         border-radius: 50%;
     }
-    
+
     85% {
         border-radius: 50%;
     }
 
     100% {
         -webkit-transform: scale(0.75);
-                transform: scale(0.75);
+        transform: scale(0.75);
     }
 }
 
 @keyframes collision-effect {
     0% {
         -webkit-transform: translateY(600px);
-                transform: translateY(600px);
+        transform: translateY(600px);
     }
 
     30% {
         -webkit-transform: translateY(0px);
-                transform: translateY(0px);
+        transform: translateY(0px);
     }
 
     55% {
         -webkit-transform: rotate(var(--rotate-first));
-                transform: rotate(var(--rotate-first));
-        border-radius: 0%;;
+        transform: rotate(var(--rotate-first));
+        border-radius: 0%;
     }
 
     80% {
         -webkit-transform: rotate(var(--rotate-later));
-                transform: rotate(var(--rotate-later));
+        transform: rotate(var(--rotate-later));
         border-radius: 50%;
     }
-    
+
     85% {
         border-radius: 50%;
     }
 
     100% {
         -webkit-transform: scale(0.75);
-                transform: scale(0.75);
+        transform: scale(0.75);
     }
 }
 
 @-webkit-keyframes shine {
     0% {
         -webkit-transform: scale(0);
-                transform: scale(0);
+        transform: scale(0);
     }
 
     100% {
         -webkit-transform: scale(3);
-                transform: scale(3);
+        transform: scale(3);
     }
 }
 
@@ -89,16 +89,17 @@ body {
     0% {
         border-radius: 50%;
         -webkit-transform: scale(0);
-                transform: scale(0);
+        transform: scale(0);
     }
 
     100% {
         -webkit-transform: scale(3);
-                transform: scale(3);
+        transform: scale(3);
     }
 }
 
-.box, .shine {
+.box,
+.shine {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -123,12 +124,12 @@ body {
     width: 100px;
     height: 100px;
     -webkit-animation: collision-effect 3s 0s both ease-in-out;
-            animation: collision-effect 3s 0s both ease-in-out;
+    animation: collision-effect 3s 0s both ease-in-out;
 }
 
 .shine {
-    width: 100vw;
-    height: 100vw;
-    -webkit-animation: shine .3s 3s both linear;
-            animation: shine .3s 3s both linear;
+    width: 100vmin;
+    height: 100vmin;
+    -webkit-animation: shine 0.3s 3s both linear;
+    animation: shine 0.3s 3s both linear;
 }
