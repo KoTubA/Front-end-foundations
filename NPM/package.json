@@ -1,15 +1,15 @@
 {
-  "name": "npm",
-  "version": "1.0.0",
-  "description": "My first project with NPM.",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index"
-  },
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.17.20"
-  },
-  "devDependencies": {}
+    "name": "npm",
+    "version": "1.0.0",
+    "description": "My first project with NPM.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "lodash": "^4.17.21"
+    },
+    "devDependencies": {}
 }
